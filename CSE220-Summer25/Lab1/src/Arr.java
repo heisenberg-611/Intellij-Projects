@@ -5,8 +5,8 @@ class Arr{
     public static void print(Object[] arr) {
         if( arr!=null ){
             System.out.print("[ ");
-            for (int i=0; i<arr.length; i++) {
-                System.out.print(arr[i] + " ");
+            for (Object o : arr) {
+                System.out.print(o + " ");
             }
             System.out.println("]");
         } else {

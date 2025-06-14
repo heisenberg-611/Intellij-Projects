@@ -3,15 +3,25 @@ public class Task3 {
 
     //Two heads are being passed onto this method
     //and a String is expected as return
-    public static String checkSimilar( Node building1, Node building2 ){
+    public static String checkSimilar(Node building1, Node building2) {
+        Node ptr1 = building1;
+        Node ptr2 = building2;
 
-        //You're not supposed to create any new Linked List for this task
+        // Traverse both lists
+        while (ptr1 != null && ptr2 != null) {
+            if (!ptr1.elem.equals(ptr2.elem)) {
+                return "Not Similar"; // Mismatch found
+            }
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
+        }
 
-        //TODO
-
-        //Once you're ready to return the String, delete the
-        //following line
-        return null;
+        // If both pointers are null, lists are of the same length
+        if (ptr1 == null && ptr2 == null) {
+            return "Similar";
+        } else {
+            return "Not Similar"; // Different lengths
+        }
     }
 
     //NOTE: if you find any issue with the driver code please inform AIB
