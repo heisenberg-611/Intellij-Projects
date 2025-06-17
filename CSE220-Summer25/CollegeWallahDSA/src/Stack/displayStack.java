@@ -3,8 +3,19 @@ package Stack;
 import java.util.Stack;
 
 public class displayStack {
+    public static void displayReverseStack(Stack<Integer> s) {
+        if (s.isEmpty()) {return;}
+        int top = s.pop();
+        System.out.print(top+" ");
+        displayReverseStack(s);
+        s.push(top);
+    }
     public static void displayStack(Stack<Integer> s) {
-        s.push(6);
+        if (s.isEmpty()) {return;}
+        int top = s.pop();
+        displayStack(s);
+        System.out.print(top+" ");
+        s.push(top);
     }
     public static void main(String[] args) {
         Stack<Integer> st = new Stack<>();
@@ -13,9 +24,10 @@ public class displayStack {
         st.push(3);
         st.push(4);
         st.push(5);
+        displayReverseStack(st);
+        System.out.println();
         System.out.println(st);
         displayStack(st);
-        System.out.println(st);
         Stack<Integer> rt = new Stack<>();
 //        while (!st.isEmpty()) {
 //            rt.push(st.pop());
