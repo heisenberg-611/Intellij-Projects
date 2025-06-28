@@ -19,7 +19,7 @@ public class Task3 {
                 return "Not Similar";
             }
         }
-        return null;
+        return "Not Similar";
     }
 
     //NOTE: if you find any issue with the driver code please inform AIB
