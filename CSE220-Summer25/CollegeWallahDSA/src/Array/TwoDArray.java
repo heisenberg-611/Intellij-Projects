@@ -88,7 +88,7 @@ public class TwoDArray {
         //transpose
         transposeInPlace(arr, n, n);
 
-        //reverse each row of transpose array
+        //reverse each row of a transpose array
         for(int i = 0; i < n; i++){
             reverseArray(arr[i]);
         }

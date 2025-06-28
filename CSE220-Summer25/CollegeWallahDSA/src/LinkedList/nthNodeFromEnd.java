@@ -67,11 +67,12 @@ public class nthNodeFromEnd {
         d.next = e;
         e.next = f;
         // 100 13 4 5 12 18
-        Node temp1 = nthNodeNormal(a, 2);
-        Node temp2 = nthNodeInOneTraversal(a,2);
-        System.out.println(temp2.data);
-        display(a);
-        a = nthNodeDeleteFromEnd(a, 6);
-        display(a);
-    }
-}
+        Node temp1 = nthNodeInOneTraversal(a, 2);
+        display(temp1);
+//        Node temp2 = nthNodeInOneTraversal(a,2);
+//        System.out.println(temp2.data);
+//        display(a);
+//        a = nthNodeDeleteFromEnd(a, 6);
+//        display(a);
+//    }
+}}

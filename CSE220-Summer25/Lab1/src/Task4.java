@@ -11,7 +11,17 @@ public class Task4 {
         //        (int)n.elem  or  (Integer)n.elem
 
         //When you're ready to return the boolean, remove the following line
-        return null;
+        Node djPi = head;
+        if(head == null || head.next == null){
+            return true;
+        }
+        while(djPi!=null && djPi.next != null){
+            if((int)djPi.elem > (int)djPi.next.elem){
+                return false;
+            }
+            djPi = djPi.next;
+        }
+        return true;
     }
 
     //NOTE: if you find any issue with the driver code please inform AIB

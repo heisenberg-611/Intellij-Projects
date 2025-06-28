@@ -3,32 +3,27 @@ class Task1{
 
     //Complete this method so that it gives the Expected Output
     public static Integer[] mergeSortedArray( Integer[] arr1, Integer[] arr2 ){
-
-        //TO DO,
+        //TO DO
         //DELETE the following return statement when you're ready to return the newly Created array
-        int mergedArrayLength = arr1.length + arr2.length;
-        Integer[] mergedArray = new Integer[mergedArrayLength];
-        int i = 0, j = 0, k = 0;
-
-        // Merge both arrays until one is exhausted
-        while (i < arr1.length && j < arr2.length) {
-            if (arr1[i] < arr2[j]) {
-                mergedArray[k++] = arr1[i++];
-            } else {
-                mergedArray[k++] = arr2[j++];
+        Integer[] mergedArray = new Integer[arr1.length + arr2.length];
+        int i = 0;
+        int j = 0;
+        for(int k = 0; k < mergedArray.length; k++){
+            if(i == arr1.length){
+                mergedArray[k] = arr2[j];
+                j++;
+            }else if(j == arr2.length){
+                mergedArray[k] = arr1[i];
+                i++;
+            }else if(arr1[i] < arr2[j]){
+                mergedArray[k] = arr1[i];
+                i++;
+            }
+            else{
+                mergedArray[k] = arr2[j];
+                j++;
             }
         }
-
-        // Add remaining elements of arr1, if any
-        while (i < arr1.length) {
-            mergedArray[k++] = arr1[i++];
-        }
-
-        // Add remaining elements of arr2, if any
-        while (j < arr2.length) {
-            mergedArray[k++] = arr2[j++];
-        }
-
         return mergedArray;
     }
 

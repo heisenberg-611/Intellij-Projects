@@ -5,7 +5,36 @@ class Task2{
     public static void mostWater( Integer[] height ){
 
         //TO DO
+        int startIdx = 0;
+        int endIdx = height.length - 1;
+        int maximumCapacity = 0;
 
+        while (startIdx < endIdx) {
+            int containerWidth = endIdx - startIdx;
+            int containerHeight = determineSmallerElevation(height[startIdx], height[endIdx]);
+
+            int currentCapacity = containerWidth * containerHeight;
+            if (currentCapacity > maximumCapacity) {
+                maximumCapacity = currentCapacity;
+            }
+
+            if (height[startIdx] < height[endIdx]) {
+                startIdx++;
+            } else if (height[startIdx] > height[endIdx]) {
+                endIdx--;
+            } else {
+                startIdx++;
+                endIdx--;
+            }
+        }
+        System.out.println(maximumCapacity);
+    }
+    private static int determineSmallerElevation(int a, int b) {
+        if(a <= b){
+            return a;
+        } else {
+            return b;
+        }
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
@@ -17,6 +46,5 @@ class Task2{
         System.out.print("49");
         System.out.print("\nYour Output:\n");
         mostWater( array );
-
     }
 }
