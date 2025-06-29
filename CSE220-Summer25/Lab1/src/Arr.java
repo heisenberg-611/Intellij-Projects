@@ -24,5 +24,21 @@ class Arr{
         }
         return maxWidth;
     }
+    // HELPER METHOD TO PRINT 2D ARRAY
+    public static void print2D(Object[][] arr) {
+        if( arr!=null ){
+            int maxWidth = findMaxWidth(arr);
+            int row = arr.length, col = arr[0].length;
+            for (int r=0; r<row; r++) {
+                System.out.print("| ");
+                for (int c=0; c<col; c++) {
+                    System.out.printf("%-"+maxWidth+"s | ",arr[r][c]);
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println(arr);
+        }
+    }
 
 }
