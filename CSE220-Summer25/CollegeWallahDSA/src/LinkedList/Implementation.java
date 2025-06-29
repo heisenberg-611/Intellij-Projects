@@ -25,9 +25,9 @@ public class Implementation {
 //        }
 //        void insertAtHead(int data) { //Time complexity O(1)
 //            Node newNode = new Node(data);
-////            if (head == null) { //empty list
-////                head = newNode;
-////                tail = newNode;
+//            if (head == null) { //empty list
+//                head = newNode;
+//                tail = newNode;
 //            if (head == null) { //same works
 //                insertAtEnd(data);
 //            } else { //non-empty list

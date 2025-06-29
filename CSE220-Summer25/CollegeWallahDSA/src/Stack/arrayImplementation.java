@@ -1,6 +1,5 @@
 package Stack;
 
-
 public class arrayImplementation {
     public static class Stack{
         private int[] arr = new int[5];

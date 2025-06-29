@@ -4,7 +4,6 @@ package LinkedList;
 
 public class LInkedList1 {
 
-
     public static void displayInkedList(Node head){
         Node temp = head;
         while(temp != null){
@@ -18,6 +17,7 @@ public class LInkedList1 {
         System.out.print(head.data + " ");
         displayInkedListRecursive(head.next);
     }
+
     public static int displayLengthInkedList(Node head){
         int count = 0;
         while(head != null){
@@ -26,6 +26,7 @@ public class LInkedList1 {
         }
         return count;
     }
+
     public static class Node{
         int data; //value
         Node next; //address of next node
@@ -33,6 +34,7 @@ public class LInkedList1 {
             this.data = data;
         }
     }
+
     public static void InsertAtEnd(Node head, int data) {
         Node newNode = new Node(data);
         Node t = head;
