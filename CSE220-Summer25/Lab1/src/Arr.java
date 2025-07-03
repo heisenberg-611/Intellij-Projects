@@ -40,5 +40,4 @@ class Arr{
             System.out.println(arr);
         }
     }
-
 }

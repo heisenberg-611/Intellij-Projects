@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 //Assignment Task 02: Row Rotation Policy
 class AssgnTask2{
 
@@ -5,12 +7,42 @@ class AssgnTask2{
     //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
     public static Integer rowRotation( Integer examWeek, String[][] matrix ){
 
-        //For this task you don"t need to create new arrays
+        //For this task you don't need to create new arrays
         //After rotation the Matrix should be printed inside the method
         //Only the integer row number is to be returned
 
         //TO DO
-        return null;
+        examWeek = examWeek % matrix.length;
+
+        for(int dj = 0; dj < examWeek-1; dj++){
+            String[] lastRow = matrix[matrix.length-1];
+            for(int i = matrix.length-1; i > 0; i--){
+                matrix[i] = matrix[i-1];
+            }
+            matrix[0] = lastRow;
+        }
+        Arr.print2D(matrix);
+
+        int seatStat = 0;
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                if(examWeek == 0){
+                    return seatStat;
+                }
+                if(matrix[i][j].equals("AA")) {
+                    if (i == matrix.length - 1) {
+                        seatStat = i + 1;
+                    } else if (i < matrix.length - 1) {
+                        seatStat = i + 1;
+                    } else {
+                        seatStat = 0;
+                    }
+                    break;
+                }
+            }
+        }
+
+        return seatStat;
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
@@ -23,6 +55,7 @@ class AssgnTask2{
                 {"U" , "V"  , "W"  , "X"  , "Y"},
                 {"Z" , "AA" , "BB" , "CC" , "DD"}
         };
+
         System.out.println("Given Seat Status: ");
         Arr.print2D(seatStatus);
 

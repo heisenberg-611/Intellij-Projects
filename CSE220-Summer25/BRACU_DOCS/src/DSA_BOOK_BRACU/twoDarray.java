@@ -29,10 +29,19 @@ public class twoDarray {
         }
     }
 
-    public static void colWise2Darray(int[][] arr){
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[i].length;j++){
-                System.out.print(arr[j][i]+" ");
+    public static void colWise2Darray(int[][] arr) {
+        int maxCols = 0;
+        for (int[] row : arr) {
+            if (row != null && row.length > maxCols) {
+                maxCols = row.length;
+            }
+        }
+
+        for (int col = 0; col < maxCols; col++) {
+            for (int row = 0; row < arr.length; row++) {
+                if (arr[row] != null && col < arr[row].length) {
+                    System.out.print(arr[row][col] + " ");
+                }
             }
         }
     }
@@ -47,25 +56,45 @@ public class twoDarray {
         System.out.println("Sum of all elements is "+sum);
     }
 
-    public static int[] sumOfRowWiseElements(int[][] arr){
-        int row = arr.length;
-        int col = arr[0].length;
-        int[] result = new int[row];
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
+    public static void sumOfRowWiseElements(int[][] arr){
+//        int row = arr.length;
+//        int col = arr[0].length;
+        int[] result = new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
                 result[i] = result[i]+arr[i][j];
             }
         }
-        return result;
+        for(int i=0;i<result.length;i++){
+            System.out.print(result[i]+" ");
+            if(i != result.length-1){
+                System.out.print(" ");
+            }
+            else{
+                System.out.println();
+            }
+        }
     }
 
     public static int[] sumOfColWiseElements(int[][] arr){
         int row = arr.length;
         int col = arr[0].length;
         int[] result = new int[col];
-        for(int i=0;i<row;i++){
-            for(int j=0;j<col;j++){
-                result[j] = result[j]+arr[i][j];
+//        for(int i=0;i<row;i++){
+//            for(int j=0;j<col;j++){
+//                result[j] = result[j]+arr[i][j];
+//            }
+//        }
+        for(int i=0;i<col;i++){
+            for(int j=0;j<row;j++){
+                result[i] = result[i]+arr[j][i];
+            }
+            System.out.print(result[i]+" ");
+            if(i != col-1){
+                System.out.print(" ");
+            }
+            else{
+                System.out.println();
             }
         }
         return result;
@@ -170,20 +199,25 @@ public class twoDarray {
     public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Enter the dimensions of the array");
-//        int n = sc.nextInt();
-//        int m = sc.nextInt();
+//        int r = sc.nextInt();
+//        int c = sc.nextInt();
 //        System.out.println("Enter the elements of the array");
-//        int[][] arr = new int[n][m];
-//        for(int i=0;i<n;i++){
-//            for(int j=0;j<m;j++){
+//        int[][] arr = new int[r][c];
+//        for(int i=0;i<r;i++){
+//            for(int j = 0; j< c; j++){
 //                arr[i][j] = sc.nextInt();
 //            }
 //            System.out.println();
 //        }
-        int[][] arr = {{4,3,8},{2,5,1},{7,-1,9},{5,4,-2}};
+        int[][] arr = {{4,3,8},
+                        {2,5,1},
+                        {7,-1,9},
+                        {5,4,-2}};
         int[][] arr1 = {{4,3},{2,5},{7,6}};
         int[][] arr2 = {{4,3,8,-7},{2,5,-1,12},{-6,16,9,10},{4,13,11,18}};
         int[][] arr3 = {{4,3,8},{2,5,1},{7,6,9}};
+        sumOfRowWiseElements(arr);
+        sumOfColWiseElements(arr);
 //        rowWise2Darray(arr);
 //        System.out.println();
 //        colWise2Darray(arr);
@@ -206,6 +240,6 @@ public class twoDarray {
 //        System.out.println("Sum of primary diagonal elements is "+sum);
 //        int sum1 = sumOfSecondaryDiagonal(arr2);
 //        System.out.println("Sum of secondary diagonal elements is "+sum1);
-        System.out.println(Arrays.deepToString(transposeMatrix(arr)));
+//        System.out.println(Arrays.deepToString(transposeMatrix(arr)));
     }
 }
