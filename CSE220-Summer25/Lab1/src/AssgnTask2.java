@@ -1,10 +1,8 @@
-import java.util.Objects;
-
 //Assignment Task 02: Row Rotation Policy
 class AssgnTask2{
 
     //Complete this method so that it gives the Expected Output
-    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODES
     public static Integer rowRotation( Integer examWeek, String[][] matrix ){
 
         //For this task you don't need to create new arrays
@@ -41,11 +39,10 @@ class AssgnTask2{
                 }
             }
         }
-
         return seatStat;
     }
 
-    //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+    //DO NOT CHANGE ANY DRIVER CODES BELOW THIS LINE
     public static void main(String[] args){
         String[][] seatStatus = {
                 {"A" , "B"  , "C"  , "D"  , "E"},

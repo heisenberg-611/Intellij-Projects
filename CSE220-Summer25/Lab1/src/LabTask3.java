@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //Lab Task 03: Decryption Process
 class LabTask3{
 
@@ -11,18 +13,14 @@ class LabTask3{
         //TO DO
         //DELETE the following return statement when you're ready to return the 2D array
         Integer[] resultColWiseSum = new Integer[matrix[0].length];
-        for(int i = 0; i < resultColWiseSum.length; i++){
-            resultColWiseSum[i] = 0;
-        }
+        Arrays.fill(resultColWiseSum, 0);
         for(int i = 0; i < matrix[0].length; i++){
             for(int j = 0; j < matrix.length; j++){
                 resultColWiseSum[i] = resultColWiseSum[i] + matrix[j][i];
             }
         }
         Integer[] decryptedArray = new Integer[matrix[0].length-1];
-        for(int i = 0; i < decryptedArray.length; i++){
-            decryptedArray[i] = 0;
-        }
+        Arrays.fill(decryptedArray, 0);
         for(int i = 0; i < resultColWiseSum.length; i++){
             if(i+1 > resultColWiseSum.length-1) break;
             decryptedArray[i] = resultColWiseSum[i+1] - resultColWiseSum[i];
