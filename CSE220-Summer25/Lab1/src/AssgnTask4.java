@@ -15,13 +15,12 @@ class AssgnTask4{
             for(int j = 0; j < arena[0].length; j++){
                 if(arena[i][j] % 50 == 0 && arena[i][j] != 0) {
 
-                    // Top neighbor
                     if (i - 1 >= 0) {
                         if (arena[i - 1][j] == 2) {
                             count2++;
                         }
                     }
-                    // Down neighbor
+
                     if (i + 1 < rows) {
                         if (arena[i + 1][j] == 2) {
                             count2++;
