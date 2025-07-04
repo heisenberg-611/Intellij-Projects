@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 //Lab Task 01: Merge Sorted Array
 class LabTask1{
 
@@ -8,9 +10,9 @@ class LabTask1{
         //TO DO
         //DELETE the following return statement when you're ready to return the newly Created array
         Integer[] mergedArray = new Integer[arr1.length + arr2.length];
-        int i = 0;
-        int j = 0;
-        for(int k = 0; k < mergedArray.length; k++){
+        int i = 0; // 1 -> 2 -> 3
+        int j = 0; // 1 -> 2 -> 3
+        for(int k = 0; k < mergedArray.length; k++){  // K = 0 -> 1 -> 2 -> 3 -> 4 -> 5
             if(i == arr1.length){
                 mergedArray[k] = arr2[j];
                 j++;
@@ -26,8 +28,27 @@ class LabTask1{
                 j++;
             }
         }
+//        int p1 = 0;
+//        for(int k = 0; k < arr1.length; k++){
+//            mergedArray[k] = arr1[k];
+//            p1=k+1;
+//        }
+//        for(int k = 0; k < arr2.length; k++){
+//            mergedArray[p1] = arr2[k];
+//            p1++;
+//        }
+//        for (int i = 0; i < mergedArray.length - 1; i++) {
+//            int minIndex = i;
+//            for (int j = i + 1; j < mergedArray.length; j++) {
+//                if (mergedArray[j] < mergedArray[minIndex]) {
+//                    minIndex = j;
+//                }
+//            }
+//            Integer temp = mergedArray[minIndex];
+//            mergedArray[minIndex] = mergedArray[i];
+//            mergedArray[i] = temp;
+//        }
         return mergedArray;
-
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
