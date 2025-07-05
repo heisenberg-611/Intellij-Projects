@@ -1,6 +1,3 @@
-import java.util.Arrays;
-
-//Lab Task 01: Merge Sorted Array
 class LabTask1{
 
     //Complete this method so that it gives the Expected Output
