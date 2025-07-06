@@ -10,9 +10,9 @@ class AssgnTask2{
         //Only the integer row number is to be returned
 
         //TO DO
-        examWeek = examWeek % matrix.length;
+        int rotation = examWeek % matrix.length;
 
-        for(int dj = 0; dj < examWeek-1; dj++){
+        for(int dj = 0; dj < rotation-1; dj++){
             String[] lastRow = matrix[matrix.length-1];
             for(int i = matrix.length-1; i > 0; i--){
                 matrix[i] = matrix[i-1];
