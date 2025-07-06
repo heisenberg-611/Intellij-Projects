@@ -10,14 +10,16 @@ class AssgnTask2{
         //Only the integer row number is to be returned
 
         //TO DO
-        int rotation = examWeek % matrix.length;
+        int sigmaLogic = examWeek % matrix.length;
 
-        for(int dj = 0; dj < rotation-1; dj++){
-            String[] lastRow = matrix[matrix.length-1];
-            for(int i = matrix.length-1; i > 0; i--){
-                matrix[i] = matrix[i-1];
+        for(int count = 0; count < sigmaLogic -1; count++){
+            String[] judgmentRow = matrix[matrix.length-1];
+            int k = matrix.length-1;
+            while(k > 0){
+                matrix[k] = matrix[k-1];
+                k--;
             }
-            matrix[0] = lastRow;
+            matrix[0] = judgmentRow;
         }
         Arr.print2D(matrix);
 

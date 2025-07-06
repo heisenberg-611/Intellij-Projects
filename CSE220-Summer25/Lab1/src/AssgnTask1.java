@@ -4,21 +4,21 @@ class AssgnTask1{
     //Complete this method so that it gives the Expected Output
     //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
     public static void mostWater( Integer[] height ){
-        int left = 0;
-        int right = height.length - 1;
-        int maxW = 0;
-        while(left<right){
-            int minH = Math.min(height[left], height[right]);
-            int capacity = (right - left) * minH;
-            if(capacity > maxW) maxW = capacity;
-            if(height[left] < height[right]) left++;
-            else if(height[left] > height[right]) right--;
+        int head1 = 0;
+        int tail1 = height.length - 1;
+        int mostWater = 0;
+        while(head1 < tail1){
+            int minH = Math.min(height[head1], height[tail1]);
+            int capacity = (tail1 - head1) * minH;
+            if(capacity > mostWater) mostWater = capacity;
+            if(height[head1] < height[tail1]) head1++;
+            else if(height[head1] > height[tail1]) tail1--;
             else {
-                left++;
-                right--;
+                head1++;
+                tail1--;
             }
         }
-        System.out.println(maxW);
+        System.out.println(mostWater);
     }
 
     //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE

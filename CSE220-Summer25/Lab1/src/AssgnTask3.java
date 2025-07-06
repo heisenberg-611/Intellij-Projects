@@ -10,17 +10,37 @@ class AssgnTask3{
         //TO DO
 
         //remove the line below and return the newly created Compressed 2D matrix
-        int sigma = matrix.length/2;
-        int beta = matrix[0].length/2;
-        Integer[][] gammaArray = new Integer[sigma][beta];
+        int sigma = matrix.length;
+        int beta = matrix[0].length;
+        Integer[][] gammaArray = new Integer[sigma/2][beta/2];
 
-        for(int i = 0; i < sigma; i++){
-            for(int j = 0; j < beta; j++){
-                gammaArray[i][j] = matrix[i*2][j*2] + matrix[i*2+1][j*2]+ matrix[i*2+1][j*2+1] + matrix[i*2][j*2+1];
+        for(int i = 0; i < sigma/2; i++){
+            int hola1 = i*2;
+            for(int j = 0; j < beta/2; j++){
+                int hola2 = j*2;
+                gammaArray[i][j] = matrix[hola1][hola2] +
+                        matrix[hola1+1][hola2]+
+                            matrix[hola1+1][hola2+1] +
+                        matrix[hola1][hola2+1];
             }
         }
         return gammaArray;
     }
+//    public static Integer[][] compressMatrix(Integer[][]matrix)
+//    {
+//        int new_row=matrix.length/2;
+//        int new_col=matrix[0].length/2;
+//        Integer [][]compressed_matrix=new Integer[new_row][new_col];
+//        for(int i=0;i<matrix.length;i+=2)
+//        {
+//            for(int j=0;j<matrix[i].length;j+=2)
+//            {
+//                int add=matrix[i][j]+matrix[i+1][j]+matrix[i][j+1]+matrix[i+1][j+1];
+//                compressed_matrix[i/2][j/2]=add;
+//            }
+//        }
+//        return compressed_matrix;
+//    }
 
     //DO NOT CHANGE ANY DRIVER CODES BELOW THIS LINE
     public static void main(String[] args){

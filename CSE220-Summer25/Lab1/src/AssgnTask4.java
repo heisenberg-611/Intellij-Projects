@@ -36,23 +36,6 @@ class AssgnTask4{
                             count2++;
                         }
                     }
-
-//                    int[][] directions = {
-//                            {-1, 0},  // Top
-//                            {1, 0},   // Down
-//                            {0, -1},  // Left
-//                            {0, 1}    // Right
-//                    };
-//                    for (int[] dir : directions) {
-//                        int newRow = i + dir[0];
-//                        int newCol = j + dir[1];
-//
-//                        if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < arena[newRow].length) {
-//                            if (arena[newRow][newCol] == 2) {
-//                                count2++;
-//                            }
-//                        }
-//                    }
                 }
             }
         }
@@ -98,3 +81,19 @@ class AssgnTask4{
         playGame( arena1 );
     }
 }
+//                    int[][] directions = {
+//                            {-1, 0},  // Top
+//                            {1, 0},   // Down
+//                            {0, -1},  // Left
+//                            {0, 1}    // Right
+//                    };
+//                    for (int[] dir : directions) {
+//                        int newRow = i + dir[0];
+//                        int newCol = j + dir[1];
+//
+//                        if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < arena[newRow].length) {
+//                            if (arena[newRow][newCol] == 2) {
+//                                count2++;
+//                            }
+//                        }
+//                    }
