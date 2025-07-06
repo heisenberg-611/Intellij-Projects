@@ -22,7 +22,9 @@ class LabTask3{
         Integer[] decryptedArray = new Integer[matrix[0].length-1];
         Arrays.fill(decryptedArray, 0);
         for(int i = 0; i < resultColWiseSum.length; i++){
-            if(i+1 > resultColWiseSum.length-1) break;
+            if(i+1 > resultColWiseSum.length-1){
+                break;
+            }
             decryptedArray[i] = resultColWiseSum[i+1] - resultColWiseSum[i];
         }
         return decryptedArray;

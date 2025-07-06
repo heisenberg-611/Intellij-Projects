@@ -3,26 +3,31 @@ class LabTask2{
 
     //Complete this method so that it gives the Expected Output
     //NO NEED TO SUBMIT LAB TASKS
-    public static void walkZigzag( Integer[][] matrix ){
+    public static void walkZigzag( Integer[][] matrix ) {
 
         //For this task you don't need to create new arrays
 
         //TO DO
-        int m = matrix.length;
-        int n = matrix[0].length;
-        for(int i = 0; i < n ; i++){
-            if(i%2==0) for(int j = 0; j < m; j+=2){
-                    System.out.print(matrix[j][i]+" ");
-
-            } else for(int j = m-1; j >= 0; j--){
-                    if(j % 2 != 0) System.out.print(matrix[j][i]+" ");
+        int r = matrix.length;
+        int c = matrix[0].length;
+        for (int i = 0; i < c; i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < r; j += 2) {
+                    System.out.print(matrix[j][i] + " ");
                 }
-
+            }
+            else {
+                for (int j = r - 1; j >= 0; j--) {
+                    if (j % 2 != 0) {
+                        System.out.print(matrix[j][i] + " ");
+                    }
+                }
+            }
             System.out.println();
         }
     }
 
-    //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+    //DO NOT CHANGE ANY DRIVER CODES BELOW THIS LINE
     public static void main(String[] args){
         Integer[][] floor1 = {
                 {3 , 8 , 4 , 6 , 1},
@@ -52,6 +57,5 @@ class LabTask2{
         System.out.print("3 9\n1 2\n4 7\n4 9\n1 8\n");
         System.out.print("\nYour Output:\n");
         walkZigzag( floor2 );
-
     }
 }

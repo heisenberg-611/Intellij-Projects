@@ -1,4 +1,4 @@
-class LabTask1{
+public class LabTask1{
 
     //Complete this method so that it gives the Expected Output
     //NO NEED TO SUBMIT LAB TASKS
@@ -7,20 +7,19 @@ class LabTask1{
         //TO DO
         //DELETE the following return statement when you're ready to return the newly Created array
         Integer[] mergedArray = new Integer[arr1.length + arr2.length];
-        int i = 0; // 1 -> 2 -> 3
-        int j = 0; // 1 -> 2 -> 3
-        for(int k = 0; k < mergedArray.length; k++){  // K = 0 -> 1 -> 2 -> 3 -> 4 -> 5
+        int i = 0; // 0 -> 1
+        int j = 0; // 0 -> 1
+        for(int k = 0; k < mergedArray.length; k++){  // K = 0 -> 1 -> 2
             if(i == arr1.length){
                 mergedArray[k] = arr2[j];
                 j++;
-            }else if(j == arr2.length){
+            } else if(j == arr2.length){
                 mergedArray[k] = arr1[i];
                 i++;
-            }else if(arr1[i] < arr2[j]){
+            } else if(arr1[i] < arr2[j]){
                 mergedArray[k] = arr1[i];
                 i++;
-            }
-            else{
+            } else{
                 mergedArray[k] = arr2[j];
                 j++;
             }
@@ -48,7 +47,7 @@ class LabTask1{
         return mergedArray;
     }
 
-    //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+    //DO NOT CHANGE ANY DRIVER CODES BELOW THIS LINE
     public static void main(String[] args){
         Integer[] a1 = {1, 2, 3};
         Integer[] a2 = {2, 5, 6};
