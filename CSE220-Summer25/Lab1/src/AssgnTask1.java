@@ -8,9 +8,8 @@ class AssgnTask1{
         int right = height.length - 1;
         int maxW = 0;
         while(left<right){
-            int wiDth = right - left;
             int minH = Math.min(height[left], height[right]);
-            int capacity = wiDth * minH;
+            int capacity = (right - left) * minH;
             if(capacity > maxW) maxW = capacity;
             if(height[left] < height[right]) left++;
             else if(height[left] > height[right]) right--;
