@@ -14,36 +14,15 @@ class AssgnTask4{
         for(int i = 0; i < arena.length; i++){
             for(int j = 0; j < arena[0].length; j++){
                 if(arena[i][j] % 50 == 0 && arena[i][j] != 0) {
-
-                    if (i - 1 >= 0) {
-                        if (arena[i - 1][j] == 2) {
-                            count2++;
-                        }
-                    }
-
-                    if (i + 1 < rows) {
-                        if (arena[i + 1][j] == 2) {
-                            count2++;
-                        }
-                    }
-                    if (j - 1 >= 0) {
-                        if (arena[i][j - 1] == 2) {
-                            count2++;
-                        }
-                    }
-                    if (j + 1 < arena[i].length) {
-                        if (arena[i][j + 1] == 2) {
-                            count2++;
-                        }
-                    }
+                    if (i - 1 >= 0) if (arena[i - 1][j] == 2) count2++;
+                    if (i + 1 < rows) if (arena[i + 1][j] == 2) count2++;
+                    if (j - 1 >= 0) if (arena[i][j - 1] == 2) count2++;
+                    if (j + 1 < arena[i].length) if (arena[i][j + 1] == 2) count2++;
                 }
             }
         }
-        if((count2*2)<10){
-            System.out.println("Points Gained: "+(count2*2)+". Your team is out.");
-        } else {
-            System.out.println("Points Gained: "+(count2*2)+". Your team has survived the game.");
-        }
+        if((count2*2)<10){System.out.println("Points Gained: "+(count2*2)+". Your team is out.");}
+        else {System.out.println("Points Gained: "+(count2*2)+". Your team has survived the game.");}
     }
 
     //DO NOT CHANGE ANY DRIVER CODES BELOW THIS LINE

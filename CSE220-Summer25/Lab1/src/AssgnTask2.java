@@ -15,10 +15,7 @@ class AssgnTask2{
         for(int count = 0; count < sigmaLogic -1; count++){
             String[] judgmentRow = matrix[matrix.length-1];
             int k = matrix.length-1;
-            while(k > 0){
-                matrix[k] = matrix[k-1];
-                k--;
-            }
+            while(k > 0){matrix[k] = matrix[k-1];k--;}
             matrix[0] = judgmentRow;
         }
         Arr.print2D(matrix);
@@ -26,18 +23,10 @@ class AssgnTask2{
         int seatStat = 0;
         for(int i = 0; i < matrix.length; i++){
             for(int j = 0; j < matrix[0].length; j++){
-                if(examWeek == 0){
-                    return seatStat;
-                }
-                if(matrix[i][j].equals("AA")) {
-                    if (i == matrix.length - 1) {
-                        seatStat = i + 1;
-                    } else if (i < matrix.length - 1) {
-                        seatStat = i + 1;
-                    } else {
-                        seatStat = 0;
-                    }
-                    break;
+                if(examWeek == 0)return seatStat;
+                if(matrix[i][j].equals("AA")) {if (i == matrix.length - 1) seatStat = i + 1;
+                else if (i < matrix.length - 1) seatStat = i + 1;
+                else seatStat = 0;break;
                 }
             }
         }
