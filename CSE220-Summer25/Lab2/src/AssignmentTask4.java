@@ -8,12 +8,22 @@ public class AssignmentTask4{
         //TO DO
         //Hint: the Node elements are actually Object, you can type cast them
         //      into int or Integer like the following:
-        //        (int)n.elem  or  (Integer)n.elem
-
-        return null; // Remove this when you're ready to return the new head
+        //        (int)n.elem or (Integer)n.elem
+        Node temp1 = head1;
+        Node temp2 = head2;
+        Node temp3 = head3;
+        Node prev = null;
+        while (temp1 != null) {
+            Node next = temp1.next;  // store next node
+            temp1.next = prev;      // reverse the link
+            prev = temp1;           // move prev to current node
+            temp1 = next;          // move to the next node
+        }
+        head1 = prev;              // update head to point to the last node
+        return head1; // Remove this when you're ready to return the new head
     }
 
-    //NOTE: if you find any issue with the driver code please inform AIB
+    //NOTE: if you find any issue with the driver code, please inform AIB
     //DO NOT MAKE ANY MODIFICATIONS IN THE TESTER CODE BELOW
     public static void main(String[] args) {
         System.out.println("=========Test Case 1=============");
