@@ -9,8 +9,20 @@ public class AssignmentTask1 {
         //You're not suppose to create any new Linked List for this task
 
         //TODO
-
-        //Once you're ready to return the String delete the following line
+        while(building1 != null && building2 != null){
+            if(building1.elem.equals(building2.elem)){
+                building1 = building1.next;
+                building2 = building2.next;
+            } else {
+                return "Not Similar";
+            }
+            if(building1 == null && building2 == null){
+                return "Similar";
+            } else if(building1 == null || building2 == null){
+                return "Not Similar";
+            }
+        }
+        //Once you're ready to return the String, delete the following line
         return null;
     }
 

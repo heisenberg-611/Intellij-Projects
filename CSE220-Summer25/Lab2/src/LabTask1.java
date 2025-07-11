@@ -12,7 +12,14 @@ public class LabTask1 {
         //        (int)n.elem  or  (Integer)n.elem
 
         //When you're ready to return the boolean remove the following line
-        return null;
+        Node temp = head;
+        while(temp != null){
+            if(temp.next != null && (int)temp.elem > (int)temp.next.elem){
+                return false;
+            }
+            temp = temp.next;
+        }
+        return true;
     }
 
     //NOTE: if you find any issue with the driver code please inform AIB

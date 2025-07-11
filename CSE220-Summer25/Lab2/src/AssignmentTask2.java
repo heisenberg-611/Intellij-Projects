@@ -4,12 +4,30 @@ public class AssignmentTask2 {
     // No need to submit this task
     public static int sumDist(Node head, Integer[] distArr) {
         // To Do
-        return 0; // Remove this line.
+        int sum = 0;
+        int size = 0;
+        Node temp = head;
+        while(temp != null){
+            size++;
+            temp = temp.next;
+        }
+        for (int k : distArr) {
+            if (k < 0 || k >= size) {
+                continue;
+            }
+            Node current = head;
+            for (int i = 0; i < k; i++) {
+                current = current.next;
+            }
+            sum += (int)current.elem;
+        }
+        return sum; // Remove this line.
     }
 
     public static void main(String[] args) {
         System.out.println("=========Test Case 1=============");
         Node head1 = LinkedList.createList(new Integer[]{10, 16, -5, 9, 3, 4});
+        Node head2 = LinkedList.createList(new Integer[]{1, 2, 3, 4, 5, 6});
         Integer[] dist = new Integer[] {2, 0, 5, 2, 8};
         System.out.print("Given LinkedList: ");
         LinkedList.printLL(head1);

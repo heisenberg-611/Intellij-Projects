@@ -5,17 +5,58 @@ public class LabTask2 {
     // After you're done coding submit only this method
     public static Node wordDecoder( Node head ){
 
-        //You're suppose to create a new Dummy headed Singly Linked List in this method
+        //You're supposed to create a new Dummy-headed Singly Linked List in this method
         //Dummy head is basically a head Node where the elem is null
         // Node dHead = new Node(null, null); here the dHead is a Dummy Head
 
         //TO DO
 
         //remove the following line when you're ready to return the new head
-        return null;
+        int size = 0;
+        Node temp = head;
+
+        while(temp != null){
+            if(temp.elem != null){
+                size++;
+            } else {
+                break;
+            }
+            temp = temp.next;
+        }
+
+        temp = head;
+        Node dHead = new Node(null, null);
+        Node current = dHead;
+        int count = 0;
+        int x = 13%size;
+        int step = x;
+        while(temp != null){
+            if(count == x){
+                Node newnode = new Node(temp.elem, null);
+                current.next = newnode;
+                current = newnode;
+                x+=step;
+            }
+            temp = temp.next;
+            count++;
+        }
+        Node prev = null;
+        current=dHead.next;
+        Node next = null;
+        while(current != null) {
+            if (dHead.next == null) {
+                return dHead; // Empty or only dummy head
+            }
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        dHead.next = prev;
+        return dHead;
     }
 
-    //NOTE: if you find any issue with the driver code please inform AIB
+    //NOTE: if you find any issue with the driver code, please inform AIB
     //DO NOT TOUCH THE DRIVER CODE BELOW
     public static void main(String[] args){
         System.out.println("==============Test Case 1=============");
