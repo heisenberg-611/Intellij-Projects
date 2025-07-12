@@ -11,7 +11,7 @@ public class LabTask1 {
         //      into int or Integer like the following:
         //        (int)n.elem  or  (Integer)n.elem
 
-        //When you're ready to return the boolean remove the following line
+        //When you're ready to return the boolean, remove the following line
         Node temp = head;
         while(temp != null){
             if(temp.next != null && (int)temp.elem > (int)temp.next.elem){

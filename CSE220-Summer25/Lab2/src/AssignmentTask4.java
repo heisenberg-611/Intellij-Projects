@@ -4,23 +4,58 @@ public class AssignmentTask4{
     // Must Submit this method
     // After you're done coding submit only this method
     public static Node idGenerator(Node head1, Node head2, Node head3) {
-
-        //TO DO
-        //Hint: the Node elements are actually Object, you can type cast them
-        //      into int or Integer like the following:
-        //        (int)n.elem or (Integer)n.elem
+        // Step 1: Reverse the first linked list (head1)
         Node temp1 = head1;
-        Node temp2 = head2;
-        Node temp3 = head3;
         Node prev = null;
+        Node tail = null;
+
+        // Store the first node as tail (will be the last after reversal)
+        if (temp1 != null) {
+            tail = temp1;
+        }
+
+        // Reverse the first linked list
         while (temp1 != null) {
             Node next = temp1.next;  // store next node
             temp1.next = prev;      // reverse the link
             prev = temp1;           // move prev to current node
-            temp1 = next;          // move to the next node
+            temp1 = next;           // move to the next node
         }
-        head1 = prev;              // update head to point to the last node
-        return head1; // Remove this when you're ready to return the new head
+
+        // Update head1 to point to the reversed list
+        Node reversedHead = prev;
+
+        // Step 2: Create a new linked list by adding corresponding elements from head2 and head3
+        Node temp2 = head2;
+        Node temp3 = head3;
+        Node resultTail = tail;  // Start with the tail of the reversed list
+
+        // Ensure tail's next is null
+        if (resultTail != null) {
+            resultTail.next = null;
+        }
+
+        // Add corresponding elements from head2 and head3
+        while (temp2 != null && temp3 != null) {
+            int sum = (int)temp2.elem + (int)temp3.elem;
+            Node newNode = new Node(sum % 10);  // Take modulo 10 to handle carry
+
+            // Append the new node to the result list
+            if (resultTail == null) {
+                // If resultTail is null, this is the first node in the result
+                resultTail = newNode;
+                // If reversedHead is null, set it to the first node
+                reversedHead = newNode;
+            } else {
+                resultTail.next = newNode;
+                resultTail = newNode;
+            }
+
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+
+        return reversedHead;
     }
 
     //NOTE: if you find any issue with the driver code, please inform AIB
