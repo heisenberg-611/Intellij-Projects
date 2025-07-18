@@ -2,10 +2,12 @@ public class AssignmentTask7 {
 
     //SUBMIT ONLY THIS METHOD
     public static void rangeMove(DNode dh, int start, int end) {
+        if (dh == null || dh.next == dh) {
+            return;
+        }
         DNode current = dh.next;
         DNode tail = dh.prev;
-        DNode stop = dh.prev;
-
+        DNode lol = dh.prev;
         while (current != dh) {
             DNode next = current.next;
             if ((int) current.elem >= start && (int) current.elem <= end) {
@@ -17,14 +19,12 @@ public class AssignmentTask7 {
                 dh.prev = current;
                 tail = current;
             }
-            if (current == stop) {
+            if (current == lol) {
                 break;
             }
             current = next;
         }
     }
-
-
 
     //DO NOT SUBMIT THE DRIVER CODE BELOW
     //SUBMITTING IT WILL INCREASE YOUR PLAG % FOR NO REASON

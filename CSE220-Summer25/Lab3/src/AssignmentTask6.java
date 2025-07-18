@@ -3,11 +3,8 @@ public class AssignmentTask6 {
     //SUBMIT ONLY THIS METHOD
     public static void pairJoin(DNode dh1, DNode dh2) {
         if (dh1 == null || dh2 == null) return;
-        DNode temp1 = dh1.next; // First actual node of dh1
-        DNode temp2 = dh2.next; // First actual node of dh2
-        if (temp1 == null && temp2 == null) return; // both empty
-        DNode tail = dh1;
-        DNode curr = dh1;
+        DNode temp1 = dh1.next; DNode temp2 = dh2.next;
+        DNode tail = dh1; DNode curr = dh1;
         while (temp1 != null && temp2 != null) {
             DNode next1 = temp1.next;
             DNode next2 = temp2.next;
@@ -47,7 +44,7 @@ public class AssignmentTask6 {
     //SUBMITTING IT WILL INCREASE YOUR PLAG % FOR NO REASON
     public static void main(String[] args) {
         Object[] list1 = {"A", "B", "C", "D"};
-        Object[] list2 = {"E", "F", "G", "H", "I"};
+        Object[] list2 = {"E", "F", "G", "H"};
 
         DNode dh1 = LinkedListHelpers.createDummyHeadedDoublyLL(list1, false);
         DNode dh2 = LinkedListHelpers.createDummyHeadedDoublyLL(list2, false);
