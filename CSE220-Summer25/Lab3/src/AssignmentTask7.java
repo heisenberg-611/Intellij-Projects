@@ -2,9 +2,29 @@ public class AssignmentTask7 {
 
     //SUBMIT ONLY THIS METHOD
     public static void rangeMove(DNode dh, int start, int end) {
-        // TO DO
+        DNode current = dh.next;
+        DNode tail = dh.prev;
+        DNode stop = dh.prev;
 
+        while (current != dh) {
+            DNode next = current.next;
+            if ((int) current.elem >= start && (int) current.elem <= end) {
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                tail.next = current;
+                current.prev = tail;
+                current.next = dh;
+                dh.prev = current;
+                tail = current;
+            }
+            if (current == stop) {
+                break;
+            }
+            current = next;
+        }
     }
+
+
 
     //DO NOT SUBMIT THE DRIVER CODE BELOW
     //SUBMITTING IT WILL INCREASE YOUR PLAG % FOR NO REASON
@@ -20,7 +40,7 @@ public class AssignmentTask7 {
         DNode expectedHead = LinkedListHelpers.createDummyHeadedDoublyLL(expected, true);
         LinkedListHelpers.printDummyHeadedDoublyCircularLL(expectedHead);
 
-        //Running the Range Move with [5,7] range
+        //Running the Range Move with [5,7] ranges
         rangeMove(dh, 5, 7);
         //Printing after Range Move
         System.out.println("\nYour Output:");
