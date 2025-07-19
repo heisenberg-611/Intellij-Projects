@@ -2,26 +2,20 @@
 public class AssignmentTask2 {
 
     // No need to submit this task
-    public static int sumDist(Node head, Integer[] distArr) {
-        // To Do
+    public static int sumDist(Node head, Integer[] distArr) {// To Do
         int sum = 0;
         int size = 0;
         Node temp = head;
-        while(temp != null){
-            size++;
-            temp = temp.next;
-        }
+        while(temp != null){size++;temp = temp.next;}
         for (int k : distArr) {
-            if (k < 0 || k >= size) {
-                continue;
-            }
+            if (k < 0 || k >= size) continue;
             Node current = head;
             for (int i = 0; i < k; i++) {
                 current = current.next;
             }
             sum += (int)current.elem;
         }
-        return sum; // Remove this line.
+        return sum;
     }
 
     public static void main(String[] args) {

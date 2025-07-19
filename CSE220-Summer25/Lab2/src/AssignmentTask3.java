@@ -11,7 +11,6 @@ public class AssignmentTask3 {
         //remove the following line when returning the Head of the modified LinkedList
         Node temp1 = head1;
         Node temp2 = head2;
-
         while(temp1 != null && temp2 != null){
             Node current = temp1.next;
             Node current2 = temp2.next;

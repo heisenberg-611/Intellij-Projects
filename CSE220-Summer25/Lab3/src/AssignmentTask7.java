@@ -2,14 +2,11 @@ public class AssignmentTask7 {
 
     //SUBMIT ONLY THIS METHOD
     public static void rangeMove(DNode dh, int start, int end) {
-        if (dh == null || dh.next == dh) {
-            return;
-        }
+        if (dh == null || dh.next == dh) {return;}
         DNode current = dh.next;
         DNode tail = dh.prev;
         DNode lol = dh.prev;
-        while (current != dh) {
-            DNode next = current.next;
+        while (current != dh) {DNode next = current.next;
             if ((int) current.elem >= start && (int) current.elem <= end) {
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
@@ -19,9 +16,7 @@ public class AssignmentTask7 {
                 dh.prev = current;
                 tail = current;
             }
-            if (current == lol) {
-                break;
-            }
+            if (current == lol) break;
             current = next;
         }
     }
