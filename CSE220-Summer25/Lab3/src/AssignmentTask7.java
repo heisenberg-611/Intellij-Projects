@@ -6,7 +6,8 @@ public class AssignmentTask7 {
         DNode current = dh.next;
         DNode tail = dh.prev;
         DNode lol = dh.prev;
-        while (current != dh) {DNode next = current.next;
+        while (current != dh) {
+            DNode next = current.next;
             if ((int) current.elem >= start && (int) current.elem <= end) {
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
