@@ -4,11 +4,25 @@ public class StackAssgnTaskTester {
     
     // You have to write this method
     // YOU MUST SUBMIT THIS METHOD
-    // Hint: You need to traverse each characters of the String
+    // Hint: You need to traverse each character of the String
     public static int diamondCount(Stack stack, String str) {
         // To Do
-
-        return -1; // Delete this line
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if(c == '<'){
+                stack.push(c);
+            } else if(c == '>'){
+                if(!stack.isEmpty()){
+                    char top = (char) stack.peek();
+                    if(top == '<'){
+                        stack.pop();
+                        count++;
+                    }
+                }
+            }
+        }
+        return count; // Delete this line
     }
 
     //DO NOT CHANGE THIS METHOD

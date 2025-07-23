@@ -1,17 +1,17 @@
 package UngradedTasks.Task1;
 
-/*You will have to complete the PairNode Contrustor first
+/*You will have to complete the PairNode Constructor first,
  then within this class you only have to complete two methods
  hashFunction() and searchHashtable()
- the rest of the metods are already written
+ the rest of the methods are already written
  DO NOT TOUCH any other methods or codes*/
 public class HashTable {
 
-    //ht[] :: is the HashTable array that stores the PairNode objects
+    //ht[]: is the HashTable array that stores the PairNode objects
     private PairNode[] ht;
 
     //Constructor that initializes the HashTable array
-	//DO NOT change this Constructor
+	//DOES NOT change this Constructor
     public HashTable(int size){
         this.ht = new PairNode[size];
     }

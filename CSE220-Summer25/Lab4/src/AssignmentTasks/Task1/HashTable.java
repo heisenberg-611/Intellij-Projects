@@ -1,6 +1,8 @@
 package AssignmentTasks.Task1;
 
-/*You will have to complete the PairNode Contrustor first
+import java.util.Objects;
+
+/*You will have to complete the PairNode Constructor first,
  then within this class you only have to complete two methods
  hashFunction() and remove()
  the rest of the methods are already written
@@ -62,15 +64,32 @@ public class HashTable {
     //Complete this method first the write remove
     private int hashFunction( Integer key ){
         // TO DO
-
-        return -1; //remove this line
+        key = (key + 3) % 6;
+        return key; //remove this line
     }
 
 
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //before writing remove you should complete hashFunction
     public void remove( Integer key ){
-        // TO DO 
+        // TO DO
+        int idx = hashFunction(key);
+        if(ht[idx]!=null){
+            PairNode temp = ht[idx];
+            if(temp.key.equals(key)){
+                ht[idx] = temp.next;
+            } else {
+                PairNode prev = ht[idx];
+                temp = temp.next;
+                while(temp!=null){
+                    if(temp.key.equals(key)){
+                        prev.next = temp.next;
+                        break;
+                    }
+                    prev = temp;
+                    temp = temp.next;
+                }
+            }
+        }
     }
-
 }
