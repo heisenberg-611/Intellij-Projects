@@ -1,7 +1,5 @@
 package AssignmentTasks.Task1;
 
-import java.util.Objects;
-
 /*You will have to complete the PairNode Constructor first,
  then within this class you only have to complete two methods
  hashFunction() and remove()
@@ -73,21 +71,21 @@ public class HashTable {
     //before writing remove you should complete hashFunction
     public void remove( Integer key ){
         // TO DO
-        int idx = hashFunction(key);
-        if(ht[idx]!=null){
-            PairNode temp = ht[idx];
-            if(temp.key.equals(key)){
-                ht[idx] = temp.next;
+        int jaygaHisab = hashFunction(key);
+        if(ht[jaygaHisab]!=null){
+            PairNode khonosthayi = ht[jaygaHisab];
+            if(khonosthayi.key.equals(key)){
+                ht[jaygaHisab] = khonosthayi.next;
             } else {
-                PairNode prev = ht[idx];
-                temp = temp.next;
-                while(temp!=null){
-                    if(temp.key.equals(key)){
-                        prev.next = temp.next;
+                PairNode purberHisab = ht[jaygaHisab];
+                khonosthayi = khonosthayi.next;
+                while(khonosthayi !=null){
+                    if(khonosthayi.key.equals(key)){
+                        purberHisab.next = khonosthayi.next;
                         break;
                     }
-                    prev = temp;
-                    temp = temp.next;
+                    purberHisab = khonosthayi;
+                    khonosthayi = khonosthayi.next;
                 }
             }
         }
