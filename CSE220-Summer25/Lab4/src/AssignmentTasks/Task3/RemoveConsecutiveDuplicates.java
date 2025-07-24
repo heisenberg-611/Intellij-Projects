@@ -2,8 +2,7 @@ package AssignmentTasks.Task3;
 
 public class RemoveConsecutiveDuplicates{
 	
-    // You have to write this method
-    // YOU MUST SUBMIT THIS METHOD
+    // You have to write this method// YOU MUST SUBMIT THIS METHOD
 //    public static String removeConsecDups(String word) {
 //        if (word == null || word.length() == 0) return word;
 //        String neko = "";
