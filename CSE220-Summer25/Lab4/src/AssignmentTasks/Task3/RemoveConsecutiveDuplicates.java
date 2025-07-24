@@ -4,25 +4,53 @@ public class RemoveConsecutiveDuplicates{
 	
     // You have to write this method
     // YOU MUST SUBMIT THIS METHOD
+//    public static String removeConsecDups(String word) {
+//        if (word == null || word.length() == 0) return word;
+//        String neko = "";
+//        LinkedListQueue lineEdarao = new LinkedListQueue();
+//        char heru = word.charAt(0);
+//        lineEdarao.enqueue(word.charAt(0));
+//        for (int i = 1; i < word.length(); i++) {
+//            char samprotic = word.charAt(i);
+//            if (samprotic != heru) {
+//                lineEdarao.enqueue(samprotic);
+//                heru = samprotic;
+//            }
+//        }
+//        while (!lineEdarao.isEmpty()) {
+//            neko += (char) lineEdarao.dequeue();
+//        }
+//        return neko;
+//    }
     public static String removeConsecDups(String word) {
-        if (word == null || word.length() == 0) return word;
-        String neko = "";
-        LinkedListQueue lineEdarao = new LinkedListQueue();
-        char heru = word.charAt(0);
-        lineEdarao.enqueue(word.charAt(0));
-        for (int i = 1; i < word.length(); i++) {
-            char samprotic = word.charAt(i);
-            if (samprotic != heru) {
-                lineEdarao.enqueue(samprotic);
-                heru = samprotic;
+        if (word == null || word.isEmpty()) return word;
+
+        LinkedListQueue queue = new LinkedListQueue();
+        int index = 0;
+
+        // Fill the queue, skipping consecutive duplicates manually
+        while (index < word.length()) {
+            char current = word.charAt(index);
+            queue.enqueue(current);
+            index++;
+
+            // Skip over all next characters that are the same
+            while (index < word.length() && word.charAt(index) == current) {
+                index++;
             }
         }
-        while (!lineEdarao.isEmpty()) {
-            neko += (char) lineEdarao.dequeue();
+
+        // Build final result string from queue manually
+        String result = "";
+        while (!queue.isEmpty()) {
+            result += (char) queue.dequeue();
         }
-        return neko;
+
+        return result;
     }
-    
+
+
+
     //DO NOT CHANGE and DO NOT SUBMIT THIS METHOD
     public static void assertTest(Object actual, Object expected) {
 	if( actual==null || !actual.equals(expected)){

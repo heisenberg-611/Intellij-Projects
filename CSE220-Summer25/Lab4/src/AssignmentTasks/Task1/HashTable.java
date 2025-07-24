@@ -61,32 +61,55 @@ public class HashTable {
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //Complete this method first the write remove
     private int hashFunction( Integer key ){
-        // TO DO
-        key = (key + 3) % 6;
-        return key; //remove this line
+        key = (key + 3) % ht.length;
+        return key;
     }
-
 
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //before writing remove you should complete hashFunction
-    public void remove( Integer key ){
-        // TO DO
-        int jaygaHisab = hashFunction(key);
-        if(ht[jaygaHisab]!=null){
-            PairNode khonosthayi = ht[jaygaHisab];
-            if(khonosthayi.key.equals(key)){
-                ht[jaygaHisab] = khonosthayi.next;
-            } else {
-                PairNode purberHisab = ht[jaygaHisab];
-                khonosthayi = khonosthayi.next;
-                while(khonosthayi !=null){
-                    if(khonosthayi.key.equals(key)){
-                        purberHisab.next = khonosthayi.next;
-                        break;
-                    }
-                    purberHisab = khonosthayi;
-                    khonosthayi = khonosthayi.next;
-                }
+//    public void remove( Integer key ){
+//        // TO DO
+//        int jaygaHisab = hashFunction(key);
+//        if(ht[jaygaHisab]!=null){
+//            PairNode khonosthayi = ht[jaygaHisab];
+//            if(khonosthayi.key.equals(key)){
+//                ht[jaygaHisab] = khonosthayi.next;
+//            } else {
+//                PairNode purberHisab = ht[jaygaHisab];
+//                khonosthayi = khonosthayi.next;
+//                while(khonosthayi !=null){
+//                    if(khonosthayi.key.equals(key)){
+//                        purberHisab.next = khonosthayi.next;
+//                        break;
+//                    }
+//                    purberHisab = khonosthayi;
+//                    khonosthayi = khonosthayi.next;
+//                }
+//            }
+//        }
+//    }
+    public void remove(Integer key) {
+        int index = hashFunction(key);
+        if (ht[index] == null) {return;}
+        PairNode walker = ht[index];
+        PairNode follower = null;
+        boolean found = false;
+        while(!found && walker != null) {
+            if (walker.key != null && walker.key.equals(key)) {
+                found = true;
+            }
+            else {
+                follower = walker;
+                walker = walker.next;
+            }
+        }
+
+        if (found) {
+            if (follower == null) {
+                ht[index] = walker.next;
+            }
+            else {
+                follower.next = walker.next;
             }
         }
     }

@@ -5,25 +5,50 @@ public class StackAssgnTaskTester {
     // You have to write this method
     // YOU MUST SUBMIT THIS METHOD
     // Hint: You need to traverse each character of the String
+//    public static int diamondCount(Stack stack, String str) {
+//        Stack huilala = stack;
+//        String lala = str;
+//        int gonona = 0;
+//        for (int i = 0; i < lala.length(); i++) {
+//            char lele = str.charAt(i);
+//            if(lele == '<'){
+//                huilala.push(lele);
+//            } else if(lele == '>'){
+//                if(!huilala.isEmpty()){
+//                    char asman = (char) huilala.peek();
+//                    if(asman == '<'){
+//                        huilala.pop();
+//                        gonona++;
+//                    }
+//                }
+//            }
+//        }
+//        return gonona; // Delete this line
+//    }
     public static int diamondCount(Stack stack, String str) {
-        // To Do
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            if(c == '<'){
-                stack.push(c);
-            } else if(c == '>'){
-                if(!stack.isEmpty()){
-                    char top = (char) stack.peek();
-                    if(top == '<'){
-                        stack.pop();
-                        count++;
+        int starCount = 0;
+
+        for (int pulse = 0; pulse < str.length(); pulse++) {
+            char photon = str.charAt(pulse);
+
+            if (photon == '<') {
+                stack.push(photon);
+            } else if (photon == '>') {
+                if (!stack.isEmpty()) {
+                    // Pop directly without peek; if mismatch, push back
+                    char wormhole = (char) stack.pop();
+                    if (wormhole == '<') {
+                        starCount++;
+                    } else {
+                        // Wrong pair, push back the popped char and current char
+                        stack.push(wormhole);
                     }
                 }
             }
         }
-        return count; // Delete this line
+        return starCount;
     }
+
 
     //DO NOT CHANGE THIS METHOD
     // This method is for printing the element of the stack. No need to modify anything.
