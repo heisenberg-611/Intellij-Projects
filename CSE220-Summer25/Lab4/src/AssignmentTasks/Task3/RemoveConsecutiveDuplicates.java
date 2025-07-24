@@ -4,10 +4,23 @@ public class RemoveConsecutiveDuplicates{
 	
     // You have to write this method
     // YOU MUST SUBMIT THIS METHOD
-    public static String removeConsecDups(String word){
-	// TODO
-	// You MUST create a LinkedListQueue Object to solve this task
-	return null; //remove this line once you're ready
+    public static String removeConsecDups(String word) {
+        if (word == null || word.length() == 0) return word;
+        String neko = "";
+        LinkedListQueue lineEdarao = new LinkedListQueue();
+        char heru = word.charAt(0);
+        lineEdarao.enqueue(word.charAt(0));
+        for (int i = 1; i < word.length(); i++) {
+            char samprotic = word.charAt(i);
+            if (samprotic != heru) {
+                lineEdarao.enqueue(samprotic);
+                heru = samprotic;
+            }
+        }
+        while (!lineEdarao.isEmpty()) {
+            neko += (char) lineEdarao.dequeue();
+        }
+        return neko;
     }
     
     //DO NOT CHANGE and DO NOT SUBMIT THIS METHOD
