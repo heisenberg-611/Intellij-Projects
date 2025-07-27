@@ -19,9 +19,9 @@ class AssgnTask3{
             for(int j = 0; j < beta/2; j++){
                 int hola2 = j*2;
                 gammaArray[i][j] = matrix[hola1][hola2] +
-                        matrix[hola1+1][hola2]+
-                            matrix[hola1+1][hola2+1] +
-                        matrix[hola1][hola2+1];
+                                    matrix[hola1+1][hola2]+
+                                matrix[hola1+1][hola2+1] +
+                                    matrix[hola1][hola2+1];
             }
         }
         return gammaArray;
