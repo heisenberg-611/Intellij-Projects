@@ -1,20 +1,56 @@
 public class Task5 {
 
-    // Task 5A: Return max value in linked list recursively
+    // Task 5A: Return max value in a linked list recursively
     public static int findMax_recursive(Node head) {
-        // TODO: Implement this recursively
-        return 0;
+        if (head == null) return Integer.MIN_VALUE;
+        int maxRest = findMax_recursive(head.next);
+        return head.elem > maxRest ? head.elem : maxRest;
     }
 
-    // Task 5B: Sort linked list recursively using selection sort logic
+    // Task 5B: Sort a linked list recursively using selection sort logic
     public static Node sortLL_recursive(Node head) {
-        // TODO: Implement this recursively
-        return null;
+        if (head == null || head.next == null) return head;
+        // Find min node in the remaining list (including head)
+        Node minNode = findMinNode(head);
+        // Swap values between head and minNode
+        int tmp = head.elem;
+        head.elem = minNode.elem;
+        minNode.elem = tmp;
+        // Recurse for the remaining list
+        head.next = sortLL_recursive(head.next);
+        return head;
+    }
+
+    private static Node findMinNode(Node head) {
+        if (head == null || head.next == null) return head;
+        Node minRest = findMinNode(head.next);
+        return (minRest != null && minRest.elem < head.elem) ? minRest : head;
     }
 
     // Task 5C: Find and print duplicate values with their positions
     public static void findDup_Recursive(Node head) {
-        // TODO: Implement this recursively
+        findDup_Helper(head, head, 0);
+    }
+
+    private static void findDup_Helper(Node originalHead, Node current, int idx) {
+        if (current == null) return;
+        String indices = collectIndices(originalHead, current.elem, idx, 0);
+        if (indices.isEmpty()) {
+            System.out.println(current.elem + ": No Duplicate");
+        } else {
+            System.out.println(current.elem + ": " + indices);
+        }
+        findDup_Helper(originalHead, current.next, idx + 1);
+    }
+
+    private static String collectIndices(Node node, int value, int excludeIndex, int currentIndex) {
+        if (node == null) return "";
+        String rest = collectIndices(node.next, value, excludeIndex, currentIndex + 1);
+        if (currentIndex != excludeIndex && node.elem == value) {
+            if (rest.isEmpty()) return String.valueOf(currentIndex);
+            else return currentIndex + ", " + rest;
+        }
+        return rest;
     }
 
     public static void main(String[] args) {

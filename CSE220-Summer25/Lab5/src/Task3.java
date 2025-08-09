@@ -5,35 +5,82 @@ public class Task3 {
     // Task 3A: Print elements of a linked list using loop
     public static void task3A(Node head) {
         // TODO: Implement this using a loop
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.elem + " -> ");
+            temp = temp.next;
+        }
+        System.out.print("null");
     }
 
     // Task 3B: Print elements of a linked list using recursion
     public static void task3B_recursive(Node head) {
         // TODO: Implement this recursively
+        Node temp = head;
+        if(temp==null){
+            System.out.print("null");
+            return;
+        }
+        System.out.print(temp.elem + " -> ");
+        task3B_recursive(temp.next);
     }
 
     // Task 3C: Return sum of all elements using loop
     public static int task3C(Node head) {
         // TODO: Implement this using a loop
-        return 0;
+        int sum = 0;
+        Node temp = head;
+        while(temp!=null){
+            sum += temp.elem;
+            temp = temp.next;
+        }
+        return sum;
     }
 
     // Task 3D: Return sum of all elements using recursion
     public static int task3D_recursive(Node head) {
         // TODO: Implement this recursively
-        return 0;
+        Node temp = head;
+        if(temp == null){
+            return 0;
+        }
+        return (temp.elem + task3D_recursive(temp.next));
     }
 
     // Task 3E: Return (sum of odd) - (product of even) using loop
     public static int task3E(Node head) {
         // TODO: Implement this using a loop
-        return 0;
+        Node temp = head;
+        int sumO = 0;
+        int pdtE = 1;
+        while(temp != null){
+            if(temp.elem %2 ==0){
+                pdtE*= temp.elem;
+            } else {
+                sumO+= temp.elem;
+            }
+            temp = temp.next;
+        }
+        return sumO-pdtE;
     }
 
     // Task 3F: Return (sum of odd) - (product of even) using recursion
     public static int task3F_recursive(Node head) {
         // TODO: Implement this recursively
-        return 0;
+        return task3F_helper(head, 0, 1);
+    }
+
+    private static int task3F_helper(Node head, int sOdd, int pEven) {
+        Node temp = head;
+        if (temp == null) return sOdd - pEven;
+
+        if (temp.elem % 2 == 0) {
+            // even -> multiply into product
+            return task3F_helper(temp.next, sOdd, pEven * temp.elem);
+        } else {
+            // odd -> add into sum
+            return task3F_helper(temp.next, sOdd + temp.elem, pEven);
+        }
     }
 
     public static void main(String[] args) {

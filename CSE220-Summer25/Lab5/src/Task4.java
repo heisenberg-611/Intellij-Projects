@@ -3,12 +3,21 @@ public class Task4 {
     // Task 4A: Print elements of linked list in reverse order using recursion
     public static void task4A_recursive(Node head) {
         // TODO: Implement this recursively
+        Node temp = head;
+        if(temp == null) return;
+        task4A_recursive(temp.next);
+        System.out.print(temp.elem + " -> ");
     }
 
-    // Task 4B: Reverse linked list recursively and return new head
+    // Task 4B: Reverse a linked list recursively and return a new head
     public static Node task4B_recursive(Node head) {
         // TODO: Implement this recursively
-        return null;
+        Node temp = head;
+        if(temp == null || temp.next == null) return temp;
+        Node newH = task4B_recursive(temp.next);
+        temp.next.next = temp;
+        temp.next = null;
+        return newH;
     }
 
     
