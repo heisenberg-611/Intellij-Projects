@@ -4,7 +4,7 @@ public class Task5 {
     public static int findMax_recursive(Node head) {
         if (head == null) return Integer.MIN_VALUE;
         int maxRest = findMax_recursive(head.next);
-        return head.elem > maxRest ? head.elem : maxRest;
+        return Math.max(head.elem, maxRest);
     }
 
     // Task 5B: Sort a linked list recursively using selection sort logic
