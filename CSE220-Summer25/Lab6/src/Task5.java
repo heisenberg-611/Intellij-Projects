@@ -9,22 +9,31 @@ public class Task5 {
     // You can use extra helper private static methods with extra extra params as per a need
     public static Integer subtractSummation( BTNode root ){
         //TO DO
-        int sum = 0;
-        Integer sum_L = sumL ( root , 0, sum);
-        Integer sum_R = sumR ( root , 0, sum);
-        return sum_L-sum_R + ( Integer ) root.elem;
+        Integer sum_L = sum ( root .left, 0);
+        Integer sum_R = sum ( root .right, 0);
+        return sum_L-sum_R;
     }
 
-    private static int sumL ( BTNode root, int lvl, int sum){
-        if(root == null) return sum;
-        sum += (Integer)root.elem;
-        return sumL ( root.left , lvl+1, sum);
+    private static int sum ( BTNode root, int sum) {
+        if (root == null) return sum;
+        sum += (Integer) root.elem+sum (root.left, sum)+sum (root.right, sum);
+        return sum;
     }
 
-    private static int sumR (BTNode root , int lvl, int sum){
-        if(root == null) return sum;
-        sum += (Integer)root.elem;
-        return sumR ( root.right , lvl+1, sum);
-    }
+//    private static int sumL(BTNode root, int sum) {
+//        if (root == null) return sum;
+//        sum += (Integer) root.elem;
+//        sum = sumL(root.left, sum);
+//        sum = sumL(root.right, sum);
+//        return sum;
+//    }
+//
+//    private static int sumR(BTNode root, int sum) {
+//        if (root == null) return sum;
+//        sum += (Integer) root.elem;
+//        sum = sumR(root.left, sum);
+//        sum = sumR(root.right, sum);
+//        return sum;
+//    }
     //============================================================================
 }
