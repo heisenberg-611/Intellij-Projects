@@ -10,18 +10,16 @@ public class Task4 {
     // All the changes will happen in-place
     // This method doesn't return anything
     // You can use extra helper private static methods as per a need
-    public static void swapChild( BTNode root, int lvl, int M ){
+    public static void swapChild ( BTNode root , int lvl , int M ) {
         //TO DO
-        if(root == null) return;
-        if(lvl == M) return;
-
-        BTNode iln = root.left;
-        root.left = root.right;
-        root.right = iln;
-
-        swapChild (root.left, lvl+1, M);
-        swapChild (root.right, lvl+1, M);
-
+        if ( root == null ) return;
+        if (lvl < M) {
+            BTNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+        swapChild ( root.left , lvl + 1 , M );
+        swapChild ( root.right , lvl + 1 , M );
     }
     //============================================================================
 }
