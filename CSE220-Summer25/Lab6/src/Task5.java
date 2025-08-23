@@ -19,6 +19,28 @@ public class Task5 {
         sum += (Integer) root.elem+sum (root.left, sum)+sum (root.right, sum);
         return sum;
     }
+//    public static Integer subtractSummation(BTNode root) {
+//        if (root == null) return 0;
+//        Integer sum_L = sumL(root.left, 0);
+//        Integer sum_R = sumR(root.right, 0);
+//        return sum_L - sum_R;
+//    }
+//
+//    private static int sumL(BTNode node, int sum) {
+//        if (node == null) return sum;
+//        sum += (Integer) node.elem;
+//        sum = sumL(node.left, sum);
+//        sum = sumL(node.right, sum);
+//        return sum;
+//    }
+//
+//    private static int sumR(BTNode node, int sum) {
+//        if (node == null) return sum;
+//        sum += (Integer) node.elem;
+//        sum = sumR(node.left, sum);
+//        sum = sumR(node.right, sum);
+//        return sum;
+//    }
 
 //    private static int sumL(BTNode root, int sum) {
 //        if (root == null) return sum;

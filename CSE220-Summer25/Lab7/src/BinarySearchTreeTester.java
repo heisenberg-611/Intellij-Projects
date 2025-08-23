@@ -209,7 +209,7 @@ public class BinarySearchTreeTester {
         else failedPrint(t1);
     }
 
-    // The driver code for this task is already written
+    // The driver code for this task is already written,
     // So no need to change it!
     public static void task5(){
         taskPrint("\n===================== TASK#5 =====================");
