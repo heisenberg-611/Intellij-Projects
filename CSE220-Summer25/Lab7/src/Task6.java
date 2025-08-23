@@ -8,7 +8,12 @@ public class Task6 {
     // You can use extra helper private static methods as per need
     public static Boolean isBST( BSTNode root ){
         //TO DO
-        return null; // remove this line
+        if (root == null) return true;
+        if (root.left == null && root.right == null) return true;
+        if (root.left != null && root.right != null) {
+            if (root.left.elem < root.elem && root.right.elem > root.elem) return true;
+        }
+        return false;
     }
     //===============================================================
 

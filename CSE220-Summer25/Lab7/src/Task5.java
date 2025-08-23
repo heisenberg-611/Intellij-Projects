@@ -8,9 +8,18 @@ public class Task5 {
     // You can use extra helper private static methods as per need
     public static Integer mirrorSum( BSTNode root ){
         //TO DO
-        return null; // remove this line
+        if (root == null) return 0;
+        return mirror(root.left, root.right);
+        //===============================================================
+}
+    private static int mirror(BSTNode a, BSTNode b) {
+        if (a == null || b == null) return 0;
+
+        int sum = 0;
+        if (a.elem != null && b.elem != null) {
+            sum += a.elem + b.elem;
+        }
+        sum += mirror(a.left, b.right) + mirror(a.right, b.left);
+        return sum;
     }
-    //===============================================================
-
-
 }
