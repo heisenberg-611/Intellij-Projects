@@ -7,13 +7,13 @@ public class RemoveConsecutiveDuplicates{
         if (word == null || word.length() == 0) return word;
         String neko = "";
         LinkedListQueue lineEdarao = new LinkedListQueue();
-        char heru = word.charAt(0);
+        char x = word.charAt(0);
         lineEdarao.enqueue(word.charAt(0));
         for (int i = 1; i < word.length(); i++) {
-            char samprotic = word.charAt(i);
-            if (samprotic != heru) {
-                lineEdarao.enqueue(samprotic);
-                heru = samprotic;
+            char temp = word.charAt(i);
+            if ( temp != x) {
+                lineEdarao.enqueue( temp );
+                x = temp;
             }
         }
         while (!lineEdarao.isEmpty()) {

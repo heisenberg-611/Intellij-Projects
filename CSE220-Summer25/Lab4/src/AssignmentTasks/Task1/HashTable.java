@@ -69,21 +69,21 @@ public class HashTable {
     //before writing remove you should complete hashFunction
     public void remove( Integer key ){
         // TO DO
-        int jaygaHisab = hashFunction(key);
-        if(ht[jaygaHisab]!=null){
-            PairNode khonosthayi = ht[jaygaHisab];
-            if(khonosthayi.key.equals(key)){
-                ht[jaygaHisab] = khonosthayi.next;
+        int space = hashFunction(key);
+        if(ht[ space ]!=null){
+            PairNode temp = ht[ space ];
+            if( temp.key.equals(key)){
+                ht[ space ] = temp.next;
             } else {
-                PairNode purberHisab = ht[jaygaHisab];
-                khonosthayi = khonosthayi.next;
-                while(khonosthayi !=null){
-                    if(khonosthayi.key.equals(key)){
-                        purberHisab.next = khonosthayi.next;
+                PairNode prevSpace = ht[ space ];
+                temp = temp.next;
+                while( temp !=null){
+                    if( temp.key.equals(key)){
+                        prevSpace.next = temp.next;
                         break;
                     }
-                    purberHisab = khonosthayi;
-                    khonosthayi = khonosthayi.next;
+                    prevSpace = temp;
+                    temp = temp.next;
                 }
             }
         }

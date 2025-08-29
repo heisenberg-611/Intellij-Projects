@@ -3,36 +3,36 @@ public class AssignmentTask6 {
     //SUBMIT ONLY THIS METHOD
     public static void pairJoin(DNode dh1, DNode dh2) {
         if (dh1 == null || dh2 == null) return;
-        DNode kataMatha1 = dh1.next; DNode KataMatha2 = dh2.next;
-        DNode lej = dh1; DNode curr = dh1;
-        while (kataMatha1 != null && KataMatha2 != null) {
-            DNode next1 = kataMatha1.next;
-            DNode next2 = KataMatha2.next;
-            curr.next = kataMatha1;
-            kataMatha1.prev = curr;
-            curr = kataMatha1;
-            curr.next = KataMatha2;
-            KataMatha2.prev = curr;
-            curr = KataMatha2;
-            kataMatha1 = next1;
-            KataMatha2 = next2;
-            lej = curr;
+        DNode dummy1 = dh1.next; DNode dummy2 = dh2.next;
+        DNode tail = dh1; DNode curr = dh1;
+        while (dummy1 != null && dummy2 != null) {
+            DNode next1 = dummy1.next;
+            DNode next2 = dummy2.next;
+            curr.next = dummy1;
+            dummy1.prev = curr;
+            curr = dummy1;
+            curr.next = dummy2;
+            dummy2.prev = curr;
+            curr = dummy2;
+            dummy1 = next1;
+            dummy2 = next2;
+            tail = curr;
         }
-        while (kataMatha1 != null) {
-            DNode next1 = kataMatha1.next;
-            curr.next = kataMatha1;
-            kataMatha1.prev = curr;
-            curr = kataMatha1;
-            kataMatha1 = next1;lej = curr;}
-        while (KataMatha2 != null) {
-            DNode next2 = KataMatha2.next;
-            curr.next = KataMatha2;
-            KataMatha2.prev = curr;
-            curr = KataMatha2;
-            KataMatha2 = next2;
-            lej = curr;}
-        lej.next = dh1;
-        dh1.prev = lej;
+        while (dummy1 != null) {
+            DNode next1 = dummy1.next;
+            curr.next = dummy1;
+            dummy1.prev = curr;
+            curr = dummy1;
+            dummy1 = next1;tail = curr;}
+        while (dummy2 != null) {
+            DNode next2 = dummy2.next;
+            curr.next = dummy2;
+            dummy2.prev = curr;
+            curr = dummy2;
+            dummy2 = next2;
+            tail = curr;}
+        tail.next = dh1;
+        dh1.prev = tail;
     }
 
     //DO NOT SUBMIT THE DRIVER CODE BELOW

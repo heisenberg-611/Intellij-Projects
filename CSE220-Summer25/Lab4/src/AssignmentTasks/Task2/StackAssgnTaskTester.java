@@ -6,24 +6,24 @@ public class StackAssgnTaskTester {
     // YOU MUST SUBMIT THIS METHOD
     // Hint: You need to traverse each character of the String
     public static int diamondCount(Stack stack, String str) {
-        Stack huilala = stack;
-        String lala = str;
-        int gonona = 0;
-        for (int i = 0; i < lala.length(); i++) {
+        Stack stack1 = stack;
+        String st = str;
+        int count = 0;
+        for (int i = 0; i < st.length(); i++) {
             char lele = str.charAt(i);
             if(lele == '<'){
-                huilala.push(lele);
+                stack1.push(lele);
             } else if(lele == '>'){
-                if(!huilala.isEmpty()){
-                    char asman = (char) huilala.peek();
+                if(! stack1.isEmpty()){
+                    char asman = (char) stack1.peek();
                     if(asman == '<'){
-                        huilala.pop();
-                        gonona++;
+                        stack1.pop();
+                        count++;
                     }
                 }
             }
         }
-        return gonona; // Delete this line
+        return count; // Delete this line
     }
 
 

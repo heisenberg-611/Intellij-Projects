@@ -5,7 +5,7 @@ public class AssignmentTask7 {
         if (dh == null || dh.next == dh) {return;}
         DNode current = dh.next;
         DNode tail = dh.prev;
-        DNode lol = dh.prev;
+        DNode last = dh.prev;
         while (current != dh) {
             DNode next = current.next;
             if ((int) current.elem >= start && (int) current.elem <= end) {
@@ -17,7 +17,7 @@ public class AssignmentTask7 {
                 dh.prev = current;
                 tail = current;
             }
-            if (current == lol) break;
+            if (current == last ) break;
             current = next;
         }
     }
