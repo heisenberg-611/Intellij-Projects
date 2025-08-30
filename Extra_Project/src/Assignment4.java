@@ -40,7 +40,7 @@ public class Assignment4 {
             } catch ( RuntimeException e ) {
                 // If heap is empty (fewer than k elements), fill with default value
                 // Alternatively, we could resize the array at this point
-                result[ i ] = Integer.MIN_VALUE; // or any other appropriate default value
+                result[ i ] = 0; // or any other appropriate default value
             }
         }
 
