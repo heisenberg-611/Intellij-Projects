@@ -1,9 +1,9 @@
 public class MaxHeap {
-    private int[] heap;
+    private final int[] heap;
     private int size;
 
     public MaxHeap(int capacity) {
-        heap = new int[capacity + 1]; // 1-based index
+        heap = new int[capacity + 1];
         size = 0;
     }
 

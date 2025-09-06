@@ -3,7 +3,7 @@ public class MinHeap {
     private int size;
 
     public MinHeap(int capacity) {
-        heap = new int[capacity + 1]; // 1-based index
+        heap = new int[capacity + 1];
         size = 0;
     }
 

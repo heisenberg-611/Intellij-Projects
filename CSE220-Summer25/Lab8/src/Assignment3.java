@@ -97,8 +97,6 @@ public class Assignment3 {
 
         // Test Case 10: Only one task
         runTest ( new int[] { 4, 2, 7, 6, 5, 9, 3, 8 } , 3 , "Test Case 10" );
-
-        //
     }
 
     private static void runTest ( int[] tasks , int m , String testName ) {
