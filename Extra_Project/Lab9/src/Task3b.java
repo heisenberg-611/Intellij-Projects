@@ -214,12 +214,16 @@ public class Task3b {
         if (adjList[from] == null) {
             adjList[from] = newNode;
         } else {
-            EdgeNode curr = adjList[from];
-            while (curr.next != null) {
-                curr = curr.next;
-            }
-            curr.next = newNode;
+            appendLL(adjList[from], newNode);
         }
+    }
+
+    public static void appendLL(EdgeNode head, EdgeNode eNode) {
+        EdgeNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = eNode;
     }
 
     public static void main(String[] args) {

@@ -2,15 +2,20 @@ public class Task4b {
     // Adds an edge to adjacency list
     public static void addEdge(EdgeNode[] adjList, int from, int toV, int weight) {
         EdgeNode newNode = new EdgeNode(toV, weight, null);
+
         if (adjList[from] == null) {
             adjList[from] = newNode;
         } else {
-            EdgeNode curr = adjList[from];
-            while (curr.next != null) {
-                curr = curr.next;
-            }
-            curr.next = newNode;
+            appendLL(adjList[from], newNode);
         }
+    }
+
+    public static void appendLL(EdgeNode head, EdgeNode eNode) {
+        EdgeNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = eNode;
     }
 
     // Converts directed graph adjacency list to undirected by adding reverse edges
