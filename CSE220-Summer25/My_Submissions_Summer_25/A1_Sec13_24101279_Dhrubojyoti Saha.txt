@@ -1,0 +1,85 @@
+//Assignment Task 1:
+
+public static void mostWater( Integer[] height ){
+        int head1 = 0;
+        int tail1 = height.length - 1;
+        int mostWater = 0;
+        while(head1 < tail1){
+            int minH = Math.min(height[head1], height[tail1]);
+            int capacity = (tail1 - head1) * minH;
+            if(capacity > mostWater) mostWater = capacity;
+            if(height[head1] < height[tail1]) head1++;
+            else if(height[head1] > height[tail1]) tail1--;
+            else {
+                head1++;
+                tail1--;
+            }
+        }
+        System.out.println(mostWater);
+    }
+
+//Assignment Task 2:
+
+public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        int sigmaLogic = examWeek % matrix.length;
+
+        for(int count = 0; count < sigmaLogic -1; count++){
+            String[] judgmentRow = matrix[matrix.length-1];
+            int k = matrix.length-1;
+            while(k > 0){matrix[k] = matrix[k-1];k--;}
+            matrix[0] = judgmentRow;
+        }
+        Arr.print2D(matrix);
+
+        int seatStat = 0;
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[0].length; j++){
+                if(examWeek == 0)return seatStat;
+                if(matrix[i][j].equals("AA")) {if (i == matrix.length - 1) seatStat = i + 1;
+                else if (i < matrix.length - 1) seatStat = i + 1;
+                else seatStat = 0;break;
+                }
+            }
+        }
+        return seatStat;
+    }
+
+//Assignment Task 3:
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+        int sigma = matrix.length;
+        int beta = matrix[0].length;
+        Integer[][] gammaArray = new Integer[sigma/2][beta/2];
+
+        for(int i = 0; i < sigma/2; i++){
+            int hola1 = i*2;
+            for(int j = 0; j < beta/2; j++){
+                int hola2 = j*2;
+                gammaArray[i][j] = matrix[hola1][hola2] +
+                        matrix[hola1+1][hola2]+
+                            matrix[hola1+1][hola2+1] +
+                        matrix[hola1][hola2+1];
+            }
+        }
+        return gammaArray;
+    }
+
+//Assignment Task 4:
+
+public static void playGame( Integer[][] arena ){
+        int rows = arena.length;
+        int count2 = 0;
+        for(int i = 0; i < arena.length; i++){
+            for(int j = 0; j < arena[0].length; j++){
+                if(arena[i][j] % 50 == 0 && arena[i][j] != 0) {
+                    if (i - 1 >= 0) if (arena[i - 1][j] == 2) count2++;
+                    if (i + 1 < rows) if (arena[i + 1][j] == 2) count2++;
+                    if (j - 1 >= 0) if (arena[i][j - 1] == 2) count2++;
+                    if (j + 1 < arena[i].length) if (arena[i][j + 1] == 2) count2++;
+                }
+            }
+        }
+        if((count2*2)<10){System.out.println("Points Gained: "+(count2*2)+". Your team is out.");}
+        else {System.out.println("Points Gained: "+(count2*2)+". Your team has survived the game.");}
+    }

@@ -1,0 +1,113 @@
+//Task1:
+	public static String checkSimilar( Node building1, Node building2 ){
+        while(building1 != null && building2 != null){
+            if(building1.elem.equals(building2.elem)){building1 = building1.next;building2 = building2.next;}
+            else {return "Not Similar";}
+            if(building1 == null && building2 == null)return "Similar";
+            else if(building1 == null || building2 == null) return "Not Similar";
+        }
+        return null;
+    }
+    
+//Task2:
+	public static int sumDist(Node head, Integer[] distArr) {
+        int sum = 0;
+        int size = 0;
+        Node temp = head;
+        while(temp != null){size++;temp = temp.next;}
+        for (int k : distArr) {if (k < 0 || k >= size) continue;
+            Node current = head;
+            for (int i = 0; i < k; i++) {
+                current = current.next;
+            }
+            sum += (int)current.elem;
+        }
+        return sum;
+    }
+    
+//Task3:
+	public static Node alternateMerge( Node head1, Node head2 ){
+        Node temp1 = head1;
+        Node temp2 = head2;
+        while(temp1 != null && temp2 != null){Node current = temp1.next;Node current2 = temp2.next;
+            temp1.next = temp2;temp2.next = current;
+            temp1 = current;temp2 = current2;
+        }
+        return head1;
+    }
+
+//Task4:
+	public static Node idGenerator(Node head1, Node head2, Node head3) {
+        Node temp1 = head1;
+        Node prev = null;
+        Node tail = null;
+        if (temp1 != null) {tail = temp1;}
+        while (temp1 != null) {Node next = temp1.next;  
+            temp1.next = prev;prev = temp1;           
+            temp1 = next;           
+        }
+        Node reversedHead = prev;
+        Node temp2 = head2;
+        Node temp3 = head3;
+        Node resultTail = tail; 
+        if (resultTail != null) {resultTail.next = null;}
+        while (temp2 != null && temp3 != null) {int sum = (int)temp2.elem + (int)temp3.elem;Node newNode = new Node(sum % 10); 
+            if (resultTail == null) {resultTail = newNode;reversedHead = newNode;} 
+            else {resultTail.next = newNode;resultTail = newNode;}
+            temp2 = temp2.next;temp3 = temp3.next;
+        }
+        return reversedHead;
+    }
+    
+//Task5:
+    public static void sumOddAppend(Node dh) {
+        if(dh.next == dh){System.out.println("No List is given.");return;}
+        Node prev = dh;
+        Node curr = dh.next;
+        int sum = 0;
+        while(curr.next != dh.next){if((int)curr.elem %2 != 0){sum += (int)curr.elem;prev.next = curr.next;} 
+            else {prev = curr;}
+            curr = curr.next;
+        }
+        Node newNode = new Node(sum);
+        prev.next = newNode;
+        newNode.next = dh;
+    }
+    
+//Task6:
+    public static void pairJoin(DNode dh1, DNode dh2) {
+        if (dh1 == null || dh2 == null) return;
+        DNode kataMatha1 = dh1.next; DNode KataMatha2 = dh2.next;
+        DNode lej = dh1; DNode curr = dh1;
+        while (kataMatha1 != null && KataMatha2 != null) {DNode next1 = kataMatha1.next;DNode next2 = KataMatha2.next;
+            curr.next = kataMatha1;
+            kataMatha1.prev = curr;curr = kataMatha1;
+            curr.next = KataMatha2;KataMatha2.prev = curr;
+            curr = KataMatha2;kataMatha1 = next1;
+            KataMatha2 = next2;lej = curr;
+        }
+        while (kataMatha1 != null) {DNode next1 = kataMatha1.next;curr.next = kataMatha1;
+            kataMatha1.prev = curr;curr = kataMatha1;kataMatha1 = next1;lej = curr;}
+        while (KataMatha2 != null) {DNode next2 = KataMatha2.next;curr.next = KataMatha2;
+            KataMatha2.prev = curr;curr = KataMatha2;KataMatha2 = next2;lej = curr;}
+        lej.next = dh1;
+        dh1.prev = lej;
+    }
+ 
+//Task7:
+	public static void rangeMove(DNode dh, int start, int end) {
+        if (dh == null || dh.next == dh) {return;}
+        DNode current = dh.next;
+        DNode tail = dh.prev;
+        DNode lol = dh.prev;
+        while (current != dh) {DNode next = current.next;
+            if ((int) current.elem >= start && (int) current.elem <= end) {
+                current.prev.next = current.next;current.next.prev = current.prev;
+                tail.next = current;current.prev = tail;
+                current.next = dh;dh.prev = current;
+                tail = current;
+            }
+            if (current == lol) break;current = next;
+        }
+    }
+    

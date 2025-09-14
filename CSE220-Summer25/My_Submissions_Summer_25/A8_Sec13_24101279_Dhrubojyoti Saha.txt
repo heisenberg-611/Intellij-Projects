@@ -1,0 +1,43 @@
+//Task 3
+
+public static int[] distributeTasks ( int[] tasks , int m ) {
+        MinHeap machineLoads = new MinHeap ( m );
+        for ( int i = 0 ; i < m ; i++ ) {
+            machineLoads.insert ( 0 );
+        }
+        
+        for ( int task : tasks ) {
+            int minLoad = machineLoads.extractMin ( );
+            int newLoad = minLoad + task;
+            machineLoads.insert ( newLoad );
+        }
+
+        
+        int[] result = new int[ m ];
+        for ( int i = 0 ; i < m ; i++ ) {
+            try {
+                result[ i ] = machineLoads.extractMin ( );
+            } catch ( RuntimeException e ) {
+                result[ i ] = 0;
+            }
+        }
+        return result;
+    }
+
+//Task 4
+
+public static int[] findTopKElements ( int[] nums , int k ) {
+        MaxHeap maxHeap = new MaxHeap ( nums.length );
+        for ( int num : nums ) {
+            maxHeap.insert ( num );
+        }
+        int[] result = new int[ k ];
+        for ( int i = 0 ; i < k ; i++ ) {
+            try {
+                result[ i ] = maxHeap.extractMax ( );
+            } catch ( RuntimeException e ) {
+                result[ i ] = Integer.MIN_VALUE;
+            }
+        }
+        return result;
+    }
