@@ -1,3 +1,4 @@
+package LAB1;
 import java.util.*;
 
 public class F_An_Ancient_Sorting_Algorithm {
