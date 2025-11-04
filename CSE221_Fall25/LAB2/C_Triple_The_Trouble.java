@@ -51,5 +51,6 @@ public class C_Triple_The_Trouble{
         }
         pw.flush();
         pw.close();
+        br.close();
     }
-}  
+} 

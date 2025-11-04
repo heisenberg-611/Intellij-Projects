@@ -1,0 +1,370 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class A_Two_Sum_Trouble{
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int N = Integer.parseInt(st.nextToken());
+        long S = Long.parseLong(st.nextToken());
+        
+        st = new StringTokenizer(br.readLine());
+        long[] arr = new long[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = Long.parseLong(st.nextToken());
+        }
+        
+        int left = 0;
+        int right = N - 1;
+        
+        while (left < right) {
+            long currentSum = arr[left] + arr[right];
+            
+            if (currentSum == S) {
+                System.out.println((left + 1) + " " + (right + 1));
+                return;
+            } else if (currentSum < S) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        
+        System.out.println(-1);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class B_Two_Sum_Revisited {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        long K = Long.parseLong(st.nextToken());
+
+        long[] arr1 = new long[N];
+        long[] arr2 = new long[M];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            arr1[i] = Long.parseLong(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine());
+        for (int j = 0; j < M; j++) {
+            arr2[j] = Long.parseLong(st.nextToken());
+        }
+
+        int i = 0;
+        int j = M - 1;
+        int bestI = i;
+        int bestJ = j;
+        long minDiff = Math.abs(arr1[i] + arr2[j] - K);
+
+        while (i < N && j >= 0) {
+            long sum = arr1[i] + arr2[j];
+            long diff = Math.abs(sum - K);
+            if (diff < minDiff) {
+                minDiff = diff;
+                bestI = i;
+                bestJ = j;
+            }
+            if (sum < K) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        System.out.println((bestI + 1) + " " + (bestJ + 1));
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+
+import java.io.*;
+import java.util.*;
+
+public class C_Triple_The_Trouble{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        PrintWriter pw = new PrintWriter(System.out);
+
+        int N = Integer.parseInt(st.nextToken());
+        long x = Long.parseLong(st.nextToken());
+
+        st = new StringTokenizer(br.readLine());
+        long[] arr = new long[N];
+        for(int i = 0; i < N; i++){
+            arr[i] = Long.parseLong(st.nextToken());
+        }
+
+        long[][] arri = new long[N][2];
+        for(int i = 0; i < N; i++){
+            arri[i][0] = arr[i];
+            arri[i][1] = i;
+        }
+
+        Arrays.sort(arri,(u,v) -> Long.compare(u[0],v[0]));
+        boolean found = false;
+        for(int i = 0; i<N-2;i++){
+            int left = i+1;
+            int right = N-1;
+            while(left<right){
+                long sum = arri[i][0] + arri[left][0] + arri[right][0];
+                if(sum == x){
+                    long id1 = arri[i][1]+1;
+                    long id2 = arri[left][1]+1;
+                    long id3 = arri[right][1]+1;
+                    pw.println(id1+" "+id2+" "+id3);
+                    found = true;
+                    break;
+                }
+                else if(sum<x){
+                    left++;
+                }
+                else{
+                    right--;
+                }
+            }
+            if(found) break;
+        }
+        if(!found){
+            pw.println(-1);
+        }
+        pw.flush();
+        pw.close();
+        br.close();
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+public class D_A_Beautiful_Sorted_List {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer stA = new StringTokenizer(br.readLine());
+        int[] A = new int[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = Integer.parseInt(stA.nextToken());
+        }
+        
+        int M = Integer.parseInt(br.readLine());
+        StringTokenizer stB = new StringTokenizer(br.readLine());
+        int[] B = new int[M];
+        for (int i = 0; i < M; i++) {
+            B[i] = Integer.parseInt(stB.nextToken());
+        }
+        
+        int[] finalBoss = new int[N + M];
+        int i = 0, j = 0, k = 0;
+        
+        while (i < N && j < M) {
+            if (A[i] <= B[j]) {
+                finalBoss[k++] = A[i++];
+            } else {
+                finalBoss[k++] = B[j++];
+            }
+        }
+        
+        while (i < N) {
+            finalBoss[k++] = A[i++];
+        }
+        
+        while (j < M) {
+            finalBoss[k++] = B[j++];
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for (int idx = 0; idx < N + M; idx++) {
+            if (idx > 0) sb.append(" ");
+            sb.append(finalBoss[idx]);
+        }
+        System.out.println(sb.toString());
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class E_Longest_Subarray_Sum{
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int N = Integer.parseInt(st.nextToken());
+        long K = Long.parseLong(st.nextToken());
+        
+        st = new StringTokenizer(br.readLine());
+        int[] a = new int[N];
+        for (int i = 0; i < N; i++) {
+            a[i] = Integer.parseInt(st.nextToken());
+        }
+
+        long currentSum = 0;
+        int left = 0;
+        int maxLength = 0;
+
+        for (int right = 0; right < N; right++) {
+            currentSum += a[right];
+            while (currentSum > K) {
+                currentSum -= a[left];
+                left++;
+            }
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        System.out.println(maxLength);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class F_Longest_K_Distinct_Subarray{
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        
+        st = new StringTokenizer(br.readLine());
+        int[] A = new int[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = Integer.parseInt(st.nextToken());
+        }
+
+        int[] freq = new int[N + 1];
+        int distinct = 0;
+        int left = 0;
+        int maxLen = 0;
+
+        for (int right = 0; right < N; right++) {
+            int val = A[right];
+            if (freq[val] == 0) {
+                distinct++;
+            }
+            freq[val]++;
+
+            while (distinct > K) {
+                int leftVal = A[left];
+                freq[leftVal]--;
+                if (freq[leftVal] == 0) {
+                    distinct--;
+                }
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        System.out.println(maxLen);
+    }
+}
+
+////////////////////////////////////////////////////////////////////////
+
+import java.io.*;
+import java.util.StringTokenizer;
+public class G_Count_the_Numbers {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int q = Integer.parseInt(st.nextToken());
+        
+        int[] a = new int[n];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            a[i] = Integer.parseInt(st.nextToken());
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < q; i++) {
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            
+            int left = lowerBound(a, x);
+            int right = upperBound(a, y);
+            sb.append(right - left).append('\n');
+        }
+        
+        System.out.print(sb);
+    }
+    
+    static int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (a[mid] < x) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        return lo;
+    }
+    
+    static int upperBound(int[] a, int y) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (a[mid] <= y) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        return lo;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+import java.io.*;
+import java.util.*;
+public class H_Searching_is_Fun{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter pw = new PrintWriter(System.out);
+        int T = Integer.parseInt(br.readLine());
+        
+        while (T-- > 0) {
+            String[] xd = br.readLine().split(" ");
+            long k = Long.parseLong(xd[0]);
+            long x = Long.parseLong(xd[1]);
+            
+            long ans = k + (k - 1) / (x - 1);
+            pw.write(ans + "\n");
+        }
+        
+        pw.flush();
+        pw.close();
+        br.close();
+    }
+}
