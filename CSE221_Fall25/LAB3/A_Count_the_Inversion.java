@@ -2,21 +2,27 @@
  *    author:  kabir_singh
  *    created: 2025.11.04 21:00:35
  **/
-import java.util.*;
 import java.io.*;
-public class A_Count_the_Inversion{
+import java.util.*;
+
+public class A_Count_the_Inversion {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
+        
         int[] A = new int[N];
         for (int i = 0; i < N; i++) {
             A[i] = Integer.parseInt(st.nextToken());
         }
- 
+
+        // Count inversions using external merge-sort-based function
         long inversionCount = countInversions(A);
- 
+
+        // Output inversion count
         System.out.println(inversionCount);
+
+        // Output the (now sorted) array — as per original behavior
         PrintWriter pw = new PrintWriter(System.out);
         for (int i = 0; i < N; i++) {
             if (i > 0) pw.print(' ');
@@ -25,13 +31,14 @@ public class A_Count_the_Inversion{
         pw.println();
         pw.flush();
     }
- 
+
+    // ---------- External Merge-Sort Inversion Counter (kept separate as requested) ----------
     static long countInversions(int[] arr) {
         int n = arr.length;
         int[] temp = new int[n];
         return mergeSort(arr, temp, 0, n - 1);
     }
- 
+
     static long mergeSort(int[] arr, int[] temp, int left, int right) {
         long invCount = 0;
         if (left < right) {
@@ -42,31 +49,27 @@ public class A_Count_the_Inversion{
         }
         return invCount;
     }
- 
+
     static long merge(int[] arr, int[] temp, int left, int mid, int right) {
         for (int i = left; i <= right; i++) {
             temp[i] = arr[i];
         }
- 
+
         int i = left, j = mid + 1, k = left;
         long invCount = 0;
- 
+
         while (i <= mid && j <= right) {
             if (temp[i] <= temp[j]) {
                 arr[k++] = temp[i++];
             } else {
                 arr[k++] = temp[j++];
-                invCount += (mid - i + 1);
+                invCount += (mid - i + 1);  // All remaining in left part form inversions
             }
         }
- 
-        while (i <= mid) {
-            arr[k++] = temp[i++];
-        }
-        while (j <= right) {
-            arr[k++] = temp[j++];
-        }
- 
+
+        while (i <= mid) arr[k++] = temp[i++];
+        while (j <= right) arr[k++] = temp[j++];
+
         return invCount;
     }
 }
