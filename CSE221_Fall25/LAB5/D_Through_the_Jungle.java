@@ -9,28 +9,22 @@ public class D_Through_the_Jungle {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
-
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
         int S = Integer.parseInt(st.nextToken());
         int D = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
-
-        @SuppressWarnings("unchecked")
         ArrayList<Integer>[] graph = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) {
             graph[i] = new ArrayList<>();
         }
-
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int u = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
             graph[u].add(v);
         }
-
-        // BFS from S → get distances & parents to all nodes
         int[] dist1 = new int[N + 1];
         int[] parent1 = new int[N + 1];
         Arrays.fill(dist1, -1);
@@ -38,7 +32,6 @@ public class D_Through_the_Jungle {
         dist1[S] = 0;
         parent1[S] = -1;
         q.offer(S);
-
         while (!q.isEmpty()) {
             int u = q.poll();
             for (int v : graph[u]) {
@@ -49,15 +42,12 @@ public class D_Through_the_Jungle {
                 }
             }
         }
-
-        // BFS from K → get distances & parents to all nodes
         int[] dist2 = new int[N + 1];
         int[] parent2 = new int[N + 1];
         Arrays.fill(dist2, -1);
         dist2[K] = 0;
         parent2[K] = -1;
         q.offer(K);
-
         while (!q.isEmpty()) {
             int u = q.poll();
             for (int v : graph[u]) {
@@ -68,23 +58,18 @@ public class D_Through_the_Jungle {
                 }
             }
         }
-
-        // Check if path S → K → D exists
         if (dist1[K] == -1 || dist2[D] == -1) {
             pw.println(-1);
         } else {
-            // Reconstruct S → K
             List<Integer> path = new ArrayList<>();
             int cur = K;
             while (cur != -1) {
                 path.add(cur);
                 cur = parent1[cur];
             }
-            Collections.reverse(path); // now: S → ... → K
-
-            // Append K → D (excluding K to avoid duplication)
+            Collections.reverse(path);
             cur = D;
-            Stack<Integer> stack = new Stack<>(); // to reverse K→D segment
+            Stack<Integer> stack = new Stack<>();
             while (cur != K) {
                 stack.push(cur);
                 cur = parent2[cur];
@@ -92,16 +77,13 @@ public class D_Through_the_Jungle {
             while (!stack.isEmpty()) {
                 path.add(stack.pop());
             }
-
-            // Output
-            pw.println(path.size() - 1); // edge count
+            pw.println(path.size() - 1);
             for (int i = 0; i < path.size(); i++) {
                 if (i > 0) pw.print(" ");
                 pw.print(path.get(i));
             }
             pw.println();
         }
-
         pw.flush();
         br.close();
         pw.close();
