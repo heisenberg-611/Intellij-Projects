@@ -15,6 +15,7 @@ public class D_Through_the_Jungle {
         int S = Integer.parseInt(st.nextToken());
         int D = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
+        @SuppressWarnings("unchecked")
         ArrayList<Integer>[] graph = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) {
             graph[i] = new ArrayList<>();

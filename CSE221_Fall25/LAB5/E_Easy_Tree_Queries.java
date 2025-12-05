@@ -16,7 +16,6 @@ public class E_Easy_Tree_Queries{
         for (int i = 0; i <= N; i++) {
             adj.add(new ArrayList<>());
         }
-
         for (int i = 0; i < N - 1; i++) {
             st = new StringTokenizer(br.readLine());
             int u = Integer.parseInt(st.nextToken());
@@ -24,29 +23,22 @@ public class E_Easy_Tree_Queries{
             adj.get(u).add(v);
             adj.get(v).add(u);
         }
-
-        // Precompute subtree sizes using iterative DFS (stack)
         int[] subtreeSize = new int[N + 1];
         int[] parent = new int[N + 1];
         Arrays.fill(parent, -1);
-
-        // First DFS stack to get order (postorder-like processing)
         Deque<Integer> stack = new ArrayDeque<>();
         Deque<Integer> postStack = new ArrayDeque<>();
         stack.push(R);
-        parent[R] = 0; // mark root's parent as dummy 0 (unused)
-
+        parent[R] = 0;
         while (!stack.isEmpty()) {
             int u = stack.pop();
-            postStack.push(u); // for processing children first
+            postStack.push(u);
             for (int v : adj.get(u)) {
                 if (v == parent[u]) continue;
                 parent[v] = u;
                 stack.push(v);
             }
         }
-
-        // Process nodes in reverse DFS order (children before parent)
         while (!postStack.isEmpty()) {
             int u = postStack.pop();
             subtreeSize[u] = 1;
@@ -55,14 +47,12 @@ public class E_Easy_Tree_Queries{
                 subtreeSize[u] += subtreeSize[v];
             }
         }
-
         int Q = Integer.parseInt(br.readLine());
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < Q; i++) {
             int X = Integer.parseInt(br.readLine());
             sb.append(subtreeSize[X]).append('\n');
         }
-
         System.out.print(sb);
     }
 }

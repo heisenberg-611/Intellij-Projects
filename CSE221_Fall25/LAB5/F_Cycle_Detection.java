@@ -1,54 +1,54 @@
 /**
  *    author:  kabir_singh
- *    created: 2025.12.05 00:23:19
+ *    created: 2025.12.05 12:52:27
  **/
 import java.io.*;
 import java.util.*;
 
-public class B_Can_you_Traverse_2 {
-    static boolean[] visited;
+public class F_Cycle_Detection {
     static ArrayList<Integer>[] adj;
-    static StringBuilder sb;
+    static int[] state;
+    static boolean hasCycle;
 
-    public static void dfs(int u) {
-        visited[u] = true;
-        sb.append(u).append(' ');
+    public static boolean dfs(int u) {
+        state[u] = 1;
         for (int v : adj[u]) {
-            if (!visited[v]) {
-                dfs(v);
+            if (state[v] == 0) {
+                if (dfs(v)) return true;
+            } else if (state[v] == 1) {
+                return true;
             }
         }
+        state[u] = 2;
+        return false;
     }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        
         adj = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) {
             adj[i] = new ArrayList<>();
         }
-        st = new StringTokenizer(br.readLine());
-        int[] u = new int[M];
         for (int i = 0; i < M; i++) {
-            u[i] = Integer.parseInt(st.nextToken());
-        }
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int u = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
-            adj[u[i]].add(v);
-            adj[v].add(u[i]);
+            adj[u].add(v);
         }
+        state = new int[N + 1];
+        hasCycle = false;
         for (int i = 1; i <= N; i++) {
-            Collections.sort(adj[i]);
+            if (state[i] == 0) {
+                if (dfs(i)) {
+                    hasCycle = true;
+                    break;
+                }
+            }
         }
-        visited = new boolean[N + 1];
-        sb = new StringBuilder();
-        dfs(1);
-        pw.println(sb.toString().trim());
+        pw.println(hasCycle ? "YES" : "NO");
         pw.flush();
         pw.close();
         br.close();
