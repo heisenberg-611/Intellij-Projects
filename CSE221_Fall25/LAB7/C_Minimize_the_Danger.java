@@ -53,7 +53,7 @@ public class C_Minimize_the_Danger {
 
         int N = fs.nextInt();
         int M = fs.nextInt();
-
+        @SuppressWarnings("unchecked")
         ArrayList<Edge>[] adj = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) adj[i] = new ArrayList<>();
 

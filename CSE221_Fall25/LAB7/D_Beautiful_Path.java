@@ -52,7 +52,7 @@ public class D_Beautiful_Path {
         for (int i = 1; i <= N; i++) {
             weight[i] = fs.nextInt();
         }
-
+        @SuppressWarnings("unchecked")
         ArrayList<Integer>[] adj = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) adj[i] = new ArrayList<>();
 

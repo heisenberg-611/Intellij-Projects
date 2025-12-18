@@ -62,7 +62,7 @@ public class E_Parity_Edges {
         for (int i = 0; i < M; i++) u[i] = fs.nextInt();
         for (int i = 0; i < M; i++) v[i] = fs.nextInt();
         for (int i = 0; i < M; i++) w[i] = fs.nextInt();
-
+        @SuppressWarnings("unchecked")
         ArrayList<Edge>[] adj = new ArrayList[N + 1];
         for (int i = 1; i <= N; i++) adj[i] = new ArrayList<>();
 
